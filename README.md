@@ -1,4 +1,4 @@
 # oi-songer.github.io
 
-> This is a repo build for my blog.
+> This is a repo built for my blog.
 
