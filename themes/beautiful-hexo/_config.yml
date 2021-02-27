@@ -4,7 +4,7 @@ navbar-links:
     About: /about/
 
 avatar: /images/logo.jpg
-favicon: /images/logo.jpg
+favicon: /images/ico.ico
 
 header:
     title: "Songer Blog"
