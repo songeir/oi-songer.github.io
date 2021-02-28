@@ -1,7 +1,7 @@
 ---
-title:Codeforeces Edu 37 D
-date:2018-02-18 17:06:05
-tags:
+title: "Codeforeces Edu 37 D"
+date: 2018-02-18 17:06:05
+tags: 
 ---
 
 # Codeforeces Edu 37 D

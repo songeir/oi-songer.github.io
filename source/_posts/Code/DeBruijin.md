@@ -1,7 +1,7 @@
 ---
-title:DeBruijin
-date:2018-08-28 13:46:54
-tags:
+title: "DeBruijin"
+date: 2018-08-28 13:46:54
+tags: 
 ---
 
 # DeBruijin

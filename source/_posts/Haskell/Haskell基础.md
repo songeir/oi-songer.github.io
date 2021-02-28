@@ -1,7 +1,7 @@
 ---
-title:Haskell基础
-date:2018-01-29 17:16:30
-tags:
+title: "Haskell基础"
+date: 2018-01-29 17:16:30
+tags: 
 ---
 
 # Haskell基础

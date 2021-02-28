@@ -1,6 +1,6 @@
 ---
-title:Wannafly Camp Day 4
-tags:
+title: "Wannafly Camp Day 4"
+tags: 
 ---
 
 # Wannafly Camp Day 4

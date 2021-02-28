@@ -1,7 +1,7 @@
 ---
-title:Oulipo
-date:2018-08-28 13:46:32
-tags:
+title: "Oulipo"
+date: 2018-08-28 13:46:32
+tags: 
 ---
 
 # Oulipo

@@ -1,7 +1,7 @@
 ---
-title:Equivalent Prefixes [笛卡尔树]
-date:2019-08-23 22:01:11
-tags:
+title: "Equivalent Prefixes [笛卡尔树]"
+date: 2019-08-23 22:01:11
+tags: 
 ---
 
 # Equivalent Prefixes [笛卡尔树]

@@ -1,7 +1,7 @@
 ---
-title:Antenna Placement
-date:2018-08-28 13:47:21
-tags:
+title: "Antenna Placement"
+date: 2018-08-28 13:47:21
+tags: 
 ---
 
 # Antenna Placement

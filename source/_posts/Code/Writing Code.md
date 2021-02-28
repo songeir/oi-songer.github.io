@@ -1,7 +1,7 @@
 ---
-title:Writing Code
-date:2018-08-28 13:46:43
-tags:
+title: "Writing Code"
+date: 2018-08-28 13:46:43
+tags: 
 ---
 
 # Writing Code

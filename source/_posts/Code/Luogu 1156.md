@@ -1,7 +1,7 @@
 ---
-title:Luogu 1156
-date:2018-03-03 17:08:56
-tags:
+title: "Luogu 1156"
+date: 2018-03-03 17:08:56
+tags: 
 ---
 
 # Luogu 1156

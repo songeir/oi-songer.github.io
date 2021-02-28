@@ -96,8 +96,9 @@ ignore:
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
+plugins: hexo-math
 ## Themes: https://hexo.io/themes/
-theme: beautiful-hexo
+theme: landscape
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

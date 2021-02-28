@@ -1,7 +1,7 @@
 ---
-title:Inversioin Counting
-date:2018-01-17 10:39:22
-tags:
+title: "Inversioin Counting"
+date: 2018-01-17 10:39:22
+tags: 
 ---
 
 # Inversioin Counting

@@ -1,7 +1,7 @@
 ---
-title:Wannafly Camp Day 0
-date:2019-01-21 09:12:06
-tags:
+title: "Wannafly Camp Day 0"
+date: 2019-01-21 09:12:06
+tags: 
 ---
 
 # Wannafly Camp Day 0

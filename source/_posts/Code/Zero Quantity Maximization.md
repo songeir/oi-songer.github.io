@@ -1,7 +1,7 @@
 ---
-title:Zero Quantity Maximization
-date:2019-03-20 20:30:50
-tags:
+title: "Zero Quantity Maximization"
+date: 2019-03-20 20:30:50
+tags: 
 ---
 
 # Zero Quantity Maximization

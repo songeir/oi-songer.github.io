@@ -1,6 +1,6 @@
 ---
-title:Wannafly Camp Day 1
-tags:
+title: "Wannafly Camp Day 1"
+tags: 
 ---
 
 # Wannafly Camp Day 1

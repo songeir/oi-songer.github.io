@@ -1,7 +1,7 @@
 ---
-title:World Cup
-date:2018-12-06 20:23:18
-tags:
+title: "World Cup"
+date: 2018-12-06 20:23:18
+tags: 
 ---
 
 # World Cup

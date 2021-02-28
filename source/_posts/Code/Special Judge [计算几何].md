@@ -1,7 +1,7 @@
 ---
-title:Special Judge [计算几何]
-date:2019-02-26 10:19:28
-tags:
+title: "Special Judge [计算几何]"
+date: 2019-02-26 10:19:28
+tags: 
 ---
 
 # Special Judge [计算几何]

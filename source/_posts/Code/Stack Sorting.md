@@ -1,7 +1,7 @@
 ---
-title:Stack Sorting
-date:2018-02-03 18:01:32
-tags:
+title: "Stack Sorting"
+date: 2018-02-03 18:01:32
+tags: 
 ---
 
 # Stack Sorting

@@ -1,7 +1,7 @@
 ---
-title:Latex数学公式常用用法
-date:2018-02-03 18:01:26
-tags:
+title: "Latex数学公式常用用法"
+date: 2018-02-03 18:01:26
+tags: 
 ---
 
 # Latex数学公式常用用法

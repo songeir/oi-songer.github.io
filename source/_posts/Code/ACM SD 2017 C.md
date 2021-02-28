@@ -1,7 +1,7 @@
 ---
-title:ACM SD 2017 C
-date:2018-06-13 19:35:09
-tags:
+title: "ACM SD 2017 C"
+date: 2018-06-13 19:35:09
+tags: 
 ---
 
 # ACM SD 2017 C

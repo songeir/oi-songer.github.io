@@ -1,7 +1,7 @@
 ---
-title:Integration [数学]
-date:2019-08-25 10:12:45
-tags:
+title: "Integration [数学]"
+date: 2019-08-25 10:12:45
+tags: 
 ---
 
 # Integration [数学]

@@ -1,7 +1,7 @@
 ---
-title:Equivalent Sets
-date:2018-08-28 13:48:11
-tags:
+title: "Equivalent Sets"
+date: 2018-08-28 13:48:11
+tags: 
 ---
 
 # Equivalent Sets

@@ -1,7 +1,7 @@
 ---
-title:Triangle Partition
-date:2018-08-28 13:48:56
-tags:
+title: "Triangle Partition"
+date: 2018-08-28 13:48:56
+tags: 
 ---
 
 # Triangle Partition

@@ -1,7 +1,7 @@
 ---
-title:Tree Constructing
-date:2018-07-05 15:41:58
-tags:
+title: "Tree Constructing"
+date: 2018-07-05 15:41:58
+tags: 
 ---
 
 # Tree Constructing

@@ -1,7 +1,7 @@
 ---
-title:Origami [思维题]
-date:2018-12-04 17:45:39
-tags:
+title: "Origami [思维题]"
+date: 2018-12-04 17:45:39
+tags: 
 ---
 
 # Origami [思维题]

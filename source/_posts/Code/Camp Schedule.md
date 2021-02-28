@@ -1,7 +1,7 @@
 ---
-title:Camp Schedule
-date:2019-03-20 21:48:53
-tags:
+title: "Camp Schedule"
+date: 2019-03-20 21:48:53
+tags: 
 ---
 
 # Camp Schedule

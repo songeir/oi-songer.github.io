@@ -1,7 +1,7 @@
 ---
-title:lambda与折叠
-date:2018-06-24 17:44:21
-tags:
+title: "lambda与折叠"
+date: 2018-06-24 17:44:21
+tags: 
 ---
 
 # lambda与折叠

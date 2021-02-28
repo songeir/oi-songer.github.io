@@ -1,7 +1,7 @@
 ---
-title:Luogu 2279
-date:2019-02-10 20:12:15
-tags:
+title: "Luogu 2279"
+date: 2019-02-10 20:12:15
+tags: 
 ---
 
 # Luogu 2279

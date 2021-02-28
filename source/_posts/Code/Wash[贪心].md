@@ -1,7 +1,7 @@
 ---
-title:Wash[贪心]
-date:2018-08-04 11:13:13
-tags:
+title: "Wash[贪心]"
+date: 2018-08-04 11:13:13
+tags: 
 ---
 
 # Wash[贪心]

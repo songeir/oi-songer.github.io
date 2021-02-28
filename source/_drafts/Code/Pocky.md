@@ -1,6 +1,6 @@
 ---
-title:Pocky
-tags:
+title: "Pocky"
+tags: 
 ---
 
 # Pocky

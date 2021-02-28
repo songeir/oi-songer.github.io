@@ -1,7 +1,7 @@
 ---
-title:Wrong Answer [数学，构造题]
-date:2019-02-25 15:34:37
-tags:
+title: "Wrong Answer [数学，构造题]"
+date: 2019-02-25 15:34:37
+tags: 
 ---
 
 # Wrong Answer [数学，构造题]

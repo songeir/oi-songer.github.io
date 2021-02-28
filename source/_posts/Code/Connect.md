@@ -1,7 +1,7 @@
 ---
-title:Connect
-date:2019-02-25 14:55:41
-tags:
+title: "Connect"
+date: 2019-02-25 14:55:41
+tags: 
 ---
 
 # Connect

@@ -1,6 +1,6 @@
 ---
-title:CodeCoder vs TopForces
-tags:
+title: "CodeCoder vs TopForces"
+tags: 
 ---
 
 # CodeCoder vs TopForces

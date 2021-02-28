@@ -1,7 +1,7 @@
 ---
-title:Luogu 3375
-date:2018-03-03 17:12:58
-tags:
+title: "Luogu 3375"
+date: 2018-03-03 17:12:58
+tags: 
 ---
 
 # Luogu 3375

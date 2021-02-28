@@ -1,7 +1,7 @@
 ---
-title:[学习笔记]Manacher算法
-date:2018-12-04 19:10:38
-tags:
+title: "[学习笔记]Manacher算法"
+date: 2018-12-04 19:10:38
+tags: 
 ---
 
 # [学习笔记]Manacher算法

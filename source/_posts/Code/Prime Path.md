@@ -1,7 +1,7 @@
 ---
-title:Prime Path
-date:2018-06-13 19:34:50
-tags:
+title: "Prime Path"
+date: 2018-06-13 19:34:50
+tags: 
 ---
 
 # Prime Path

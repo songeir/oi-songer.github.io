@@ -1,7 +1,7 @@
 ---
-title:Doing Homework again
-date:2018-08-05 22:28:08
-tags:
+title: "Doing Homework again"
+date: 2018-08-05 22:28:08
+tags: 
 ---
 
 # Doing Homework again

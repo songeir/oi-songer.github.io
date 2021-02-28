@@ -1,7 +1,7 @@
 ---
-title:Toy Train [思维题]
-date:2019-02-27 09:16:33
-tags:
+title: "Toy Train [思维题]"
+date: 2019-02-27 09:16:33
+tags: 
 ---
 
 # Toy Train [思维题]

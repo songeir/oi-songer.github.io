@@ -1,7 +1,7 @@
 ---
-title:Efficient Tracking
-date:2018-08-28 13:44:49
-tags:
+title: "Efficient Tracking"
+date: 2018-08-28 13:44:49
+tags: 
 ---
 
 # Efficient Tracking

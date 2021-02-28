@@ -113,6 +113,7 @@ def main(argv):
     for md_file, cate, file_path in file_iterator():
         title, content = file_title(file_path)
         typecho_title, timestamp = search(dat_text, title)
+
         typecho_title = typecho_title.replace('\[', '[')
         typecho_title = typecho_title.replace('\]', ']')
 
@@ -136,10 +137,10 @@ def main(argv):
                 output_file = open(output_path, 'w')
 
                 output_str = '---\n' + \
-                    'title:{}\n'.format(typecho_title) + \
-                    'date:{}\n'.format(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(timestamp)))) + \
-                    'tags:\n' + \
-                    '---\n\n' + content
+                    'title: \"{}\"\n'.format(typecho_title) + \
+                    'date: {}\n'.format(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(timestamp)))) + \
+                    'tags: \n' + \
+                    '---\n\n' + content.replace('https://oi-songer.github.io', '/images/')
 
                 output_file.write(output_str)
 
@@ -152,8 +153,8 @@ def main(argv):
                 output_file = open(output_path, 'w')
 
                 output_str = '---\n' + \
-                    'title:{}\n'.format(typecho_title) + \
-                    'tags:\n' + \
+                    'title: \"{}\"\n'.format(typecho_title) + \
+                    'tags: \n' + \
                     '---\n\n' + content
 
                 output_file.write(output_str)

@@ -1,7 +1,7 @@
 ---
-title:Two Cakes [思维题]
-date:2019-03-01 09:18:53
-tags:
+title: "Two Cakes [思维题]"
+date: 2019-03-01 09:18:53
+tags: 
 ---
 
 # Two Cakes [思维题]

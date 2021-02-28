@@ -1,7 +1,7 @@
 ---
-title:Cyclic Nacklace
-date:2018-08-28 13:46:20
-tags:
+title: "Cyclic Nacklace"
+date: 2018-08-28 13:46:20
+tags: 
 ---
 
 # Cyclic Nacklace

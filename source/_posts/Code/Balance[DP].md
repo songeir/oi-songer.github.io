@@ -1,7 +1,7 @@
 ---
-title:Balance[DP]
-date:2018-08-24 15:37:24
-tags:
+title: "Balance[DP]"
+date: 2018-08-24 15:37:24
+tags: 
 ---
 
 # Balance[DP]

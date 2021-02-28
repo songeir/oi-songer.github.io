@@ -1,7 +1,7 @@
 ---
-title:Remainder Problem [思维题]
-date:2019-08-25 13:45:38
-tags:
+title: "Remainder Problem [思维题]"
+date: 2019-08-25 13:45:38
+tags: 
 ---
 
 # Remainder Problem [思维题]

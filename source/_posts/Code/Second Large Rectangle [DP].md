@@ -1,7 +1,7 @@
 ---
-title:Second Large Rectangle [DP]
-date:2019-08-26 21:31:05
-tags:
+title: "Second Large Rectangle [DP]"
+date: 2019-08-26 21:31:05
+tags: 
 ---
 
 # Second Large Rectangle [DP]

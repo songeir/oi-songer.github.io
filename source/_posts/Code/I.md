@@ -1,7 +1,7 @@
 ---
-title:I
-date:2018-03-14 22:43:23
-tags:
+title: "I"
+date: 2018-03-14 22:43:23
+tags: 
 ---
 
 # I'm Telling the Truth

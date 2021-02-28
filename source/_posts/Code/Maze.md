@@ -1,7 +1,7 @@
 ---
-title:Maze
-date:2018-08-28 13:35:06
-tags:
+title: "Maze"
+date: 2018-08-28 13:35:06
+tags: 
 ---
 
 # Maze

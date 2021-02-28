@@ -1,6 +1,6 @@
 ---
-title:[学习笔记]Dinic算法
-tags:
+title: "[学习笔记]Dinic算法"
+tags: 
 ---
 
 # [学习笔记]Dinic算法(最大费用流)

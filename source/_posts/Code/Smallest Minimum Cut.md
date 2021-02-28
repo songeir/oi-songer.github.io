@@ -1,7 +1,7 @@
 ---
-title:Smallest Minimum Cut
-date:2018-08-28 14:55:32
-tags:
+title: "Smallest Minimum Cut"
+date: 2018-08-28 14:55:32
+tags: 
 ---
 
 # Smallest Minimum Cut

@@ -1,6 +1,6 @@
 ---
-title:Error
-tags:
+title: "Error"
+tags: 
 ---
 
 <!-- K Balanced Teams -->

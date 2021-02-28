@@ -1,6 +1,6 @@
 ---
-title:Luogu 1967
-tags:
+title: "Luogu 1967"
+tags: 
 ---
 
 # Luogu 1967
