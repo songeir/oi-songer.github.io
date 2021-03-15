@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Songer Blog
+title: Songer
 subtitle: ''
 description: '念念不忘，必有回响'
-keywords: cpp, acm, algorithm, haskell
+keywords: c++, cpp, acm, algorithm, haskell
 author: Songer
 language: zh-CN
 timezone: 'Asia/Shanghai'
@@ -14,6 +14,7 @@ timezone: 'Asia/Shanghai'
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: http://songer.xyz
+root: /
 permalink: :title/
 permalink_defaults:
 pretty_urls:
@@ -40,21 +41,21 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
   enable: true
   line_number: true
   auto_detect: false
-  tab_replace: ''
+  tab_replace: 
   wrap: true
   hljs: false
-prismjs:
-  enable: false
-  preprocess: true
-  line_number: true
-  tab_replace: ''
+# prismjs:
+#   enable: false
+#   preprocess: true
+#   line_number: true
+#   tab_replace: ''
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -96,11 +97,58 @@ ignore:
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
-plugins: hexo-math
+plugins: 
+  # - hexo-math
+  - markdown-it-abbr
+  - markdown-it-footnote
+  - markdown-it-ins
+  - markdown-it-sub
+  - markdown-it-sup
+  - markdown-it-emoji
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: Anisina
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+# The above settings are from 'Anisina' theme
+
+# Build settings
+anchorjs: false                        # if you want to customize anchor. check out line:181 of `post.html`
+
+# Site
+SEOTitle: Songer
+header-img: /images/logo.jpg
+email: weixiao.song@outlook.com
+favicon: /images/ico.ico
+keyword: c++, cpp, acm, algorithm, haskell
+
+# Analytics settings
+# Baidu Analytics
+ba_track_id:
+# Google Analytics
+ga_track_id:             # Format: UA-xxxxxx-xx
+ga_domain:
+
+# Sidebar settings
+sidebar-about-description: # 个人描述
+sidebar-avatar:     # use absolute URL
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+
+# friends
+friends:  # 友链
+
+# search api , set your custom key
+swiftype_key: 
+
+# archive page title 
+archive:
+    title: archives
+    description: 可以根据归档日期检索所有文件
+
+# theme settings end

@@ -2,12 +2,14 @@ sudo: false
 language: node_js
 node_js:
   - 10 # use nodejs v10 LTS
-cache: npm
+cache: yarn
 branches:
   only:
     - master # build master branch only
 script:
   - hexo generate # generate static files
+before_install:
+  - sudo apt-get -y install pandoc
 deploy:
   provider: pages
   skip-cleanup: true
