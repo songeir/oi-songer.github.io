@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="念念不忘，必有回响">
+    <meta name="keyword" content="c++, cpp, acm, algorithm, haskell">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="/images/ico.ico">
+    <link rel="alternate" type="application/atom+xml" title="Songer" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        lambda与折叠｜Songer
+        
+    </title>
+
+    <link rel="canonical" href="http://songer.xyz/Haskell/lambda与折叠/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/images/logo.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Songer
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>lambda与折叠</h1>
+                    
+                    <span class="meta">
+                         作者 Songer
+                        <span>
+                          日期 2018-06-24
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            lambda与折叠
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="lambda与折叠">lambda与折叠</h1>
+<blockquote>
+<div class="line-block">一个已经一个半月没有更过的系列。。。。折叠比较难以理解，需要多花时间来学习一下，这篇博客的篇幅应该也会比较长。</div>
+</blockquote>
+<span id="more"></span>
+<p>参考书籍: <a target="_blank" rel="noopener" href="http://learnyouahaskell.com/"><em>Learn you a Haskell</em></a></p>
+<h2 id="lambda">lambda</h2>
+<p>lambda在Haskell中就是指一次性的佚名函数。当我们想使用一个函数但是不想再去定义它时可以使用lambda。在Haskell中，如果襄阳声明一个lambda，就写一个<code>\</code>。之所以用这个符号，是因为它长得比较像<span class="math inline">\(\lambda\)</span>（然而我觉得并不像。。。）。具体用例如下：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">biggerThanFive</span> :: <span class="type">Int</span></span><br><span class="line"><span class="title">biggerThanFive</span> xs = length (filter (\x -&gt; even x) xs) </span><br></pre></td></tr></table></figure>
+<p>上面的式子计算出了1到100中偶数的个数。lambda表达式看上去十分好用，以至于经常被滥用，很多情况下的lambda表达式都是没有必要的，比如下面两个式子便是等价的: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">addThree</span> :: [<span class="type">Int</span>] -&gt; [<span class="type">Int</span>]</span><br><span class="line"><span class="title">addThree</span> xs = map (+<span class="number">3</span>) xs</span><br><span class="line"></span><br><span class="line"><span class="title">addThree</span> :: [<span class="type">Int</span>] -&gt; [<span class="type">Int</span>]</span><br><span class="line"><span class="title">ad</span> <span class="type">Three</span> xs = map (\x -&gt; x + <span class="number">3</span>) xs</span><br></pre></td></tr></table></figure></p>
+<p>和普通函数一样,lambda也可以取多个参数：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ghci</span>&gt; zipWith (\(a,b) -&gt; a + b) [(<span class="number">1</span>,<span class="number">2</span>),(<span class="number">3</span>,<span class="number">5</span>),(<span class="number">6</span>,<span class="number">3</span>),(<span class="number">2</span>,<span class="number">6</span>),(<span class="number">2</span>,<span class="number">5</span>)]</span><br><span class="line">[<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>]</span><br></pre></td></tr></table></figure>
+<p>此外，还有一个同时运用了lambda和柯里化的较为有趣的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sumThree :: Int -&gt; Int -&gt; Int -&gt; Int</span><br><span class="line">sumThree x y z &#x3D; x + y + z</span><br><span class="line"></span><br><span class="line">sumThree :: Int -&gt; Int -&gt; Int -&gt; Int </span><br><span class="line">sumThree &#x3D; \x -&gt; \y -&gt; \z -&gt; x + y + z</span><br></pre></td></tr></table></figure>
+<p>上面的两个函数的作用时相同的。只不过第二个并不易理解。</p>
+<h2 id="折叠">折叠</h2>
+<p>折叠应该算是到现在为止比较难的部分了(起码我是这么认为的)，其实主要是学会区分和使用左折叠和右折叠。折叠会取一个二元函数，一个初始值和一个列表。它会依次将二元函数从左到右或从右到左应用到列表上，并且上一个的返回值为下一次二元运算的一个参数。</p>
+<h3 id="foldl-左折叠">foldl-左折叠</h3>
+<p>左折叠，显而易见，就是从列表的左端开始执行"折叠"操作。闲话不多说，我们先来举一个最简单的例子-求和：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sum&#x27;</span> :: (<span class="type">Num</span> a) =&gt; [a] -&gt; a</span><br><span class="line"><span class="title">sum&#x27;</span> xs = foldl (\acc x -&gt; acc + x) <span class="number">0</span> xs</span><br></pre></td></tr></table></figure>
+<p>在进行左折叠时，譬如计算<code>sum' [3,5,2,6]</code>，即<code>foldl (\acc x -&gt; acc + x) 0 [3,5,2,6]</code>,其步骤大概为先计算<code>0+3</code>，得出<code>3</code>，再计算<code>3+5</code>，得出<code>8</code>，然后计算<code>8+2</code>，得出<code>10</code>，最后计算<code>10+6</code>，算出<code>16</code>，得到最终答案。</p>
+<p>当然，上面的函数如果我们使用函数柯里化的方式而非lambda函数的话，写法会更加简单: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sum&#x27;</span> :: (<span class="type">Num</span> a) =&gt; [a] -&gt; a</span><br><span class="line"><span class="title">sum&#x27;</span> = foldl (+) <span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="foldr-右折叠">foldr-右折叠</h3>
+<p>右折叠，顾名思义，从右边开始折叠。需要注意的是，右折叠的<strong>二元函数内的参数</strong>位置和左折叠是相反的。折叠的初始值可以为任何类型，比如，我们可以自己实现<code>map</code>函数，初始值为<code>map</code>所要操作的列表，写法如下：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">map&#x27;</span> :: (a -&gt; b) -&gt; [a] -&gt; [b]</span><br><span class="line"><span class="title">map&#x27;</span> f xs = foldr (\x acc -&gt; f x : acc) [] xs</span><br></pre></td></tr></table></figure>
+<p>如果我们运行<code>map' (+3) [1,2,3]</code>,即<code>foldr (\x acc -&gt; f x : acc) [] xs</code>时，程序会首先将执行<code>f 3 : []</code>,得到<code>[6]</code>,然后执行<code>f 2 : [6]</code>,得到<code>[5,6]</code>，最后是<code>f 1 :[5,6]</code>，得到<code>[4,5,6]</code>。当然，我们也可以使用左折叠来实现<code>map'</code>函数：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">map&#x27;</span> :: (a -&gt; b) -&gt; [a] -&gt; [b];</span><br><span class="line"><span class="title">map&#x27;</span> f xs = foldl (\acc x -&gt; acc ++ [f x]) [] xs</span><br></pre></td></tr></table></figure>
+<p>但是，使用左折叠时用到的<code>++</code>操作远比<code>:</code>要慢，所以需要生成列表时，我们一般会使用右折叠。此外，两个折叠有一个非常重要的区别：左折叠无法处理无限列表，而右折叠可以。这个我们在之后会深入讨论。</p>
+<h3 id="foldl1与foldr1">foldl1与foldr1</h3>
+<p>当我们想要使用折叠而又没有初始值时该怎么办呢？这时候就要拿出我们的<code>foldl1</code>和<code>foldr1</code>函数了。这两个函数与常规的折叠函数的唯一区别是没有初始值，而是取列表最左(右)边的元素作为初始值。在很多时候这会非常有用，比如我们要实现一个<code>maximum'</code>函数： <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">maximum&#x27;</span> :: (<span class="type">Ord</span> a) =&gt; [a] -&gt; a</span><br><span class="line"><span class="title">maximum</span> = foldl1 max</span><br></pre></td></tr></table></figure></p>
+<p>此时的<code>maximum'</code>函数会取列表最左边的元素作为初始值，然后一次向右进行折叠操作，以此比较出最大值。</p>
+<p><code>foldl1</code>和<code>foldr1</code>需要注意的是传入的列表不能够为空列表，应该至少包含一个元素，否则会发生运行时错误。</p>
+<h3 id="一些折叠的例子">一些折叠的例子</h3>
+<p>为了继续熟悉折叠的用法，我们来用折叠实现几个标准库函数： <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">reverse&#x27;</span> :: [a] -&gt; a</span><br><span class="line"><span class="title">reverse&#x27;</span> = foldl (\acc x -&gt; x : acc) []</span><br></pre></td></tr></table></figure></p>
+<p>这里我们使用左折叠，从左边开始取数，然后从左边放入答案的列表中，实现反转功能。而若是我们使用<code>filp</code>，可以将上面的函数简化成这样： <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">reverse&#x27;</span>= fold (flip (:)) []</span><br></pre></td></tr></table></figure></p>
+<p>我们可以实现<code>product'</code>函数： <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">product&#x27;</span> :: (<span class="type">Num</span> a) =&gt; [a] -&gt; a</span><br><span class="line"><span class="title">product&#x27;</span> = foldl (*) <span class="number">1</span></span><br></pre></td></tr></table></figure> 或者写成这样 <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">product&#x27;</span> = foldl1 (*)</span><br></pre></td></tr></table></figure></p>
+<p>还有较为复杂的<code>filter'</code>函数： <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">filter&#x27;</span> :: (a -&gt; <span class="type">Bool</span>) -&gt; [a] -&gt; [b]</span><br><span class="line"><span class="title">filter&#x27;</span> p = foldr (\x acc -&gt; <span class="keyword">if</span> p x <span class="keyword">then</span> x : acc <span class="keyword">else</span> acc) []</span><br></pre></td></tr></table></figure></p>
+<p>此外，我们还可以用折叠来实现<code>last'</code>函数，这是比较巧妙地用法： <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">last&#x27;</span> :: [a] -&gt; a</span><br><span class="line"><span class="title">last&#x27;</span> = foldl1 (\_ x -&gt; x)</span><br></pre></td></tr></table></figure></p>
+<h3 id="关于折叠的运行步骤">关于折叠的运行步骤</h3>
+<p>我们很容易理解，左折叠和右折叠分别为从左侧和右侧开始。但是若是将这过程直接拆分为一个表达式会是什么样子呢？还是以<code>sum'</code>函数为例，假如进行<code>sum' [3,5,6,8]</code>操作，那么，左折叠和右折叠的运行步骤应该为什么样子呢？</p>
+<ul>
+<li>左折叠：</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(((<span class="number">0</span> + <span class="number">3</span>) + <span class="number">5</span>) + <span class="number">6</span>) + <span class="number">8</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>右折叠:</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span> + (<span class="number">5</span> + (<span class="number">6</span> + (<span class="number">8</span> + <span class="number">0</span>)))</span><br></pre></td></tr></table></figure>
+<h3 id="无限列表的折叠">无限列表的折叠</h3>
+<p>之前我们也已经讲过了，只有右折叠能够实现无限列表的操作。这看上去有悖于直觉。因为我们可能会认为左折叠是从左面开始的，所以能过先计算左边的元素，然后因为Haskell的惰性，满足条件时直接退出。</p>
+<p>但是，我们可以来看一下之前提到的折叠的运行步骤。当我们将左折叠和右折叠分别拆分时，发现两种折叠都为括号内的项数为无限多。而左折叠的括号在左侧，右折叠在右侧。也就是说，右折叠拆分后，无限多的项被放到了右边，因此我们可以从左边开始依次进行处理，然后根据情况依赖于Haskell的惰性，退出这个无限长的式子。</p>
+<p>比如，我们运行下面的式子:</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ghci</span>&gt; foldr &amp;&amp; <span class="type">True</span> (repeat <span class="type">False</span>)</span><br><span class="line"><span class="type">False</span></span><br></pre></td></tr></table></figure>
+<p>这个式子拆分完后是:</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">True</span> &amp;&amp; (<span class="type">False</span> &amp;&amp; (<span class="type">False</span> &amp;&amp; (<span class="type">False</span> &amp;&amp; ...)))</span><br></pre></td></tr></table></figure>
+<p>也就是说，我们完全可以从左到右依次运行，算出结果为<code>False</code>。</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/Code/Tree Constructing/" data-toggle="tooltip" data-placement="top"
+                           title="Tree Constructing">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/Diary/大一下第十七周/" data-toggle="tooltip" data-placement="top"
+                           title="大一下第十七周">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lambda%E4%B8%8E%E6%8A%98%E5%8F%A0"><span class="toc-text">lambda与折叠</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda"><span class="toc-text">lambda</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%98%E5%8F%A0"><span class="toc-text">折叠</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#foldl-%E5%B7%A6%E6%8A%98%E5%8F%A0"><span class="toc-text">foldl-左折叠</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#foldr-%E5%8F%B3%E6%8A%98%E5%8F%A0"><span class="toc-text">foldr-右折叠</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#foldl1%E4%B8%8Efoldr1"><span class="toc-text">foldl1与foldr1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E6%8A%98%E5%8F%A0%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-text">一些折叠的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%8A%98%E5%8F%A0%E7%9A%84%E8%BF%90%E8%A1%8C%E6%AD%A5%E9%AA%A4"><span class="toc-text">关于折叠的运行步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E9%99%90%E5%88%97%E8%A1%A8%E7%9A%84%E6%8A%98%E5%8F%A0"><span class="toc-text">无限列表的折叠</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Songer 2021
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://songer.xyz/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="">
+</body>
+
+</html>

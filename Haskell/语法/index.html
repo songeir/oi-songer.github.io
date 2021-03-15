@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="念念不忘，必有回响">
+    <meta name="keyword" content="c++, cpp, acm, algorithm, haskell">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="/images/ico.ico">
+    <link rel="alternate" type="application/atom+xml" title="Songer" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        语法｜Songer
+        
+    </title>
+
+    <link rel="canonical" href="http://songer.xyz/Haskell/语法/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/images/logo.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Songer
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>语法</h1>
+                    
+                    <span class="meta">
+                         作者 Songer
+                        <span>
+                          日期 2018-02-05
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            语法
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="语法模式匹配哨卫">语法(模式匹配，哨卫)</h1>
+<blockquote>
+<p>|几天不写Blog了，先写个Haskell凑个数。估计再写两次就赶上现在学的进度了。</p>
+</blockquote>
+<span id="more"></span>
+<p>参考书籍: <a target="_blank" rel="noopener" href="http://learnyouahaskell.com/"><em>Learn you a haskell</em></a></p>
+<h2 id="模式匹配">模式匹配</h2>
+<h3 id="定义">定义</h3>
+<p><strong>模式匹配(pattern matching)</strong>通过检查数据的特殊结构来检查是否匹配，并按模式从中解析出数据。</p>
+<p>在Haskell中，函数经常要用到模式匹配，并且可以匹配一切数据类型。譬如，我们有一个检查传进的数是否是7的函数: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">lucky</span> :: <span class="type">Int</span> -&gt; <span class="type">String</span></span><br><span class="line"><span class="title">lucky</span> <span class="number">7</span> = <span class="string">&quot;LUCKY NUMBER SEVEN!&quot;</span></span><br><span class="line"><span class="title">lucky</span> x = <span class="string">&quot;Sorry, you&#x27;re out of luck, pal!&quot;</span></span><br></pre></td></tr></table></figure> 在调用<code>lucky()</code>时，函数会将传入的参数从上到下进行匹配，一旦有匹配，对应的函数体就会被调用。其功能其实类似于if-else语句。</p>
+<p>如果我们在模式中给出一个小写字母，那这就是一个<strong>万能模式(catchall pattern)</strong>。他总能匹配输入的参数，并可以在后面调用。</p>
+<p>这里还有一个斐波那契数列的例子: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">factorial</span> :: <span class="type">Int</span> -&gt; <span class="type">String</span></span><br><span class="line"><span class="title">factorial</span> <span class="number">0</span> = <span class="number">1</span></span><br><span class="line"><span class="title">factorial</span> n = n * factorial (n - <span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<p>这里，我们使用了递归来实现，并通过模式匹配来处理了边界值。后面我们会知道，这在Haskell中是十分常见的一种用法。</p>
+<p>另外，模式匹配的最后一定要加入一个万能模式，即该函数必须能够处理所有情况，否则调用时用非常规值会发生错误。</p>
+<h3 id="元组的模式匹配">元组的模式匹配</h3>
+<p>元组同样可以使用模式匹配。譬如下面的计算二维向量和的函数: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--不对元组内部进行模式匹配</span></span><br><span class="line"><span class="title">addVectors</span> :: (<span class="type">Double</span>, <span class="type">Double</span>) -&gt; (<span class="type">Double</span>, <span class="type">Double</span>) -&gt; (<span class="type">Double</span>, <span class="type">Double</span>)</span><br><span class="line"><span class="title">addVectors</span> a b = (fst a + fst b, snd a + snd b)</span><br><span class="line"><span class="comment">--对元组进行模式匹配</span></span><br><span class="line"><span class="title">addVectors</span> :: (<span class="type">Double</span>, <span class="type">Double</span>) -&gt; (<span class="type">Double</span>, <span class="type">Double</span>) -&gt; (<span class="type">Double</span>, <span class="type">Double</span>)</span><br><span class="line"><span class="title">addVectors</span> (x1, y1) (x2, y2) = (x1 + x2, y1 + y2)</span><br></pre></td></tr></table></figure></p>
+<h3 id="占位符">占位符</h3>
+<p>在模式匹配时我们有可能只需要考虑其中的某些值，对于其他值不予考虑。这种情况一般发生在使用元组时。比如我们想要看元组的第一个数是否为7: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--我们固然可以使用万能匹配，如这样</span></span><br><span class="line"><span class="title">lucky</span> :: (<span class="type">Int</span>, <span class="type">Int</span>) -&gt; <span class="type">String</span></span><br><span class="line"><span class="title">lucky</span> (<span class="number">7</span>, y) = <span class="string">&quot;Lucky for you!&quot;</span></span><br><span class="line"><span class="title">lcuky</span> (x, y) = <span class="string">&quot;You are not lucky!&quot;</span></span><br><span class="line"><span class="comment">--但是我们也可以用占位符，像这样</span></span><br><span class="line"><span class="title">lucky</span> :: (<span class="type">Int</span>, <span class="type">Int</span>) -&gt; <span class="type">String</span></span><br><span class="line"><span class="title">lucky</span> (<span class="number">7</span>, _) = <span class="string">&quot;Lucky for you!&quot;</span></span><br><span class="line"><span class="title">lucky</span> (_, _) = <span class="string">&quot;You are not lucky!&quot;</span></span><br></pre></td></tr></table></figure> 使用占位符表示我们不关心它的内容，更常见的如取出序对的第一个数: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">first</span> :: (a,b,c) -&gt; x</span><br><span class="line"><span class="title">first</span> (x, _, _) = x</span><br></pre></td></tr></table></figure></p>
+<h3 id="列表和列表推导式的模式匹配">列表和列表推导式的模式匹配</h3>
+<p>在列表推导式中也可以使用模式匹配: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ghci</span>&gt; <span class="keyword">let</span> xs = [(<span class="number">1</span>,<span class="number">3</span>), (<span class="number">4</span>,<span class="number">3</span>), (<span class="number">2</span>,<span class="number">4</span>), (<span class="number">5</span>,<span class="number">3</span>), (<span class="number">5</span>,<span class="number">6</span>), (<span class="number">3</span>,<span class="number">1</span>)]</span><br><span class="line"><span class="title">ghci</span>&gt; [a+b | (a,b) &lt;- xs]</span><br><span class="line">[<span class="number">4</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">11</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure> 我们可以使用<code>[]</code>来匹配空列表，也可以配合<code>:</code>来匹配非空列表(在Haskell中<code>[1, 2, 3]</code>就是<code>1:2:3:[]</code>的语法糖)。比如我们可以写一个<code>head</code>函数: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">head</span> :: [a] -&gt; a</span><br><span class="line"><span class="title">head</span> [] = error <span class="string">&quot;Can&#x27;t call head on an empty list, dummy!&quot;</span></span><br><span class="line"><span class="title">head</span> (x:_) = x</span><br></pre></td></tr></table></figure> 注意，当我们匹配列表时，对所有元素个数不同的列表都要进行匹配，譬如，我们若创建一个如下列表就会发生错误: <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">badAdd :: (Num a) &#x3D;&gt; [a] -&gt; a</span><br><span class="line">badAdd (x:y:z:[]) &#x3D; x + y + z</span><br></pre></td></tr></table></figure></p>
+<h3 id="as模式">As模式</h3>
+<p><strong>as模式(as-pattern)</strong>允许我们按模式把一个值分割成多个项，同时保留对整体的引用。要使用as模式，只要将一个名字和<code>@</code>置于普通模式的前面即可。</p>
+<p>比如我们有一个取出第一个字符的函数定义如下: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">firstletter</span> :: <span class="type">String</span> -&gt; <span class="type">String</span></span><br><span class="line"><span class="title">firstletter</span> <span class="string">&quot;&quot;</span> = ”<span class="type">Empty</span> string, whoops!<span class="string">&quot;</span></span><br><span class="line"><span class="string">firstletter all@(x:xs) = &quot;</span><span class="type">The</span> first letter <span class="keyword">of</span> <span class="string">&quot; ++ all ++ &quot;</span>is <span class="string">&quot; ++ [x]</span></span><br></pre></td></tr></table></figure> 使用时效果如下: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ghci</span>&gt; firstletter <span class="string">&quot;Songer&quot;</span></span><br><span class="line"><span class="string">&quot;The first letter of Songer is S&quot;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="哨卫">哨卫</h2>
+<p>模式用来检查参数的结构是否匹配，<strong>哨卫(guard)</strong>则用来检查参数的性质是否为真。其亦与if语句相似，但是可读性更高。</p>
+<p>我们这里先看一个用到哨卫的函数,根据你的分数按照A,B,C,D进行打分: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">judge</span> :: <span class="type">Int</span> -&gt; <span class="type">String</span></span><br><span class="line"><span class="title">judge</span> score</span><br><span class="line">	| score&lt;<span class="number">60</span> = <span class="string">&quot;You got a D, fool!&quot;</span></span><br><span class="line">    | score&lt;<span class="number">75</span> = <span class="string">&quot;You got a C!&quot;</span></span><br><span class="line">    | score&lt;<span class="number">85</span> = <span class="string">&quot;You got a B,not bad!&quot;</span></span><br><span class="line">    | score&lt;=<span class="number">100</span> = <span class="string">&quot;Congratulation, you got an A!&quot;</span></span><br><span class="line">    | otherwise = <span class="string">&quot;Error score!&quot;</span></span><br></pre></td></tr></table></figure></p>
+<p>哨卫跟在竖线(|)的右边，一个哨卫就是一个布尔表达式，如果计算为<code>True</code>，则选择对应的函数体，否则计算下一个函数体。每条哨卫语句至少缩进一个空格。</p>
+<p>与模式匹配一样，在最后一般要加上一个万能的情况以提升鲁棒性。</p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/C#/名称空间/" data-toggle="tooltip" data-placement="top"
+                           title="名称空间">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/Code/Stack Sorting/" data-toggle="tooltip" data-placement="top"
+                           title="Stack Sorting">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D%E5%93%A8%E5%8D%AB"><span class="toc-text">语法(模式匹配，哨卫)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="toc-text">模式匹配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%BB%84%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="toc-text">元组的模式匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%A0%E4%BD%8D%E7%AC%A6"><span class="toc-text">占位符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E5%92%8C%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC%E5%BC%8F%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="toc-text">列表和列表推导式的模式匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#as%E6%A8%A1%E5%BC%8F"><span class="toc-text">As模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%A8%E5%8D%AB"><span class="toc-text">哨卫</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Songer 2021
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://songer.xyz/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="">
+</body>
+
+</html>

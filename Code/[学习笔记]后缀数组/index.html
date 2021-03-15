@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="念念不忘，必有回响">
+    <meta name="keyword" content="c++, cpp, acm, algorithm, haskell">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="/images/ico.ico">
+    <link rel="alternate" type="application/atom+xml" title="Songer" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        [学习笔记]后缀数组｜Songer
+        
+    </title>
+
+    <link rel="canonical" href="http://songer.xyz/Code/[学习笔记]后缀数组/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/images/logo.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Songer
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>[学习笔记]后缀数组</h1>
+                    
+                    <span class="meta">
+                         作者 Songer
+                        <span>
+                          日期 2019-02-26
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            [学习笔记]后缀数组
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="学习笔记后缀数组">[学习笔记]后缀数组</h1>
+<blockquote>
+<p>时隔数月，终于又来学些新东西了。这次Camp知识点学到的不多，不过倒是知道了许多需要学的知识点。最近可能此主题的Blog比较多。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="算法介绍">算法介绍</h2>
+<h3 id="基础知识">基础知识</h3>
+<p>在许多题目中，我们经常需要对一个字符串的子串作许多查询操作，而此时后缀树，后缀自动机和后缀数组之类的数据结构就可以大幅度的帮我们节省时间。其中，后缀数组因其实现简单，作用较为丰富且空间占用少广为使用。</p>
+<p><strong>后缀数组(Suffix Array)</strong>实现的功能是对一个字符串的不同后缀子串进行排序。对于长度为<span class="math inline">\(len\)</span>的字符串<span class="math inline">\(s\)</span>，它的后缀<span class="math inline">\(suffix(i)\)</span>为<span class="math inline">\(s[i..len]\)</span>。然后，我们通过对这<span class="math inline">\(len\)</span>个子串进行排序，得到以下的几个数组：</p>
+<ul>
+<li><code>sa[]</code>：保存了对字符串<span class="math inline">\(s\)</span>的所有后缀排序后的结果。<code>sa[i]</code>存储了第<span class="math inline">\(i\)</span>小的后缀在原串中的起始位置。</li>
+<li><code>rank[]</code>：名次数组。<code>rank[i]</code>存储了以<span class="math inline">\(i\)</span>为起始位置的后缀子串在<code>sa[]</code>中的排名，即<code>sa[rank[i]] = i</code>。</li>
+</ul>
+<p>此外，我们假设比较的串为<code>a</code>,<code>b</code>,那么比较操作的定义如下： 1. <span class="math inline">\(a[i]&lt;b[i]\)</span>: <span class="math inline">\(a&lt;b\)</span>; 2. <span class="math inline">\(a[i]&gt;b[i]\)</span>: <span class="math inline">\(a&gt;b\)</span>; 3. <span class="math inline">\(a[i]=b[i]\)</span>: 比较第<span class="math inline">\(i+1\)</span>位。 4. <span class="math inline">\(i &gt; len(b)\)</span>: <span class="math inline">\(a&gt;b\)</span>; 5. <span class="math inline">\(i &gt; len(a)\)</span>: <span class="math inline">\(a&lt;b\)</span>。</p>
+<p>由此判定条件，我们可以发现由于我们要比较的<span class="math inline">\(len\)</span>个串由于长度各不相同，所以不可能相等。</p>
+<p>此时，我们便可以想出最简单的后缀数组构造方法：写出所有的后缀字串然后进行一遍排序即可。由于排序操作是<span class="math inline">\(O(n\log n)\)</span>的，并且字串的长度最大为<span class="math inline">\(n\)</span>，所以时间复杂度为<span class="math inline">\(O(n^2 \log n)\)</span>。这个时间明显有些大了，这时我们便需要使用倍增的方法进行构造了。</p>
+<h3 id="倍增法">倍增法</h3>
+<p>当我们对<span class="math inline">\(n\)</span>个互不关联的长度为<span class="math inline">\(n\)</span>的字符串进行排序时，我们固然需要<span class="math inline">\(O(n^2 \log n)\)</span>的时间进行排序。但是，我们这里比较的是后缀子串，所以我们其实可以利用其中的性质。</p>
+<p>我们现在假设有一个二维数组<code>rk[i][j]</code>，它代表的是以<span class="math inline">\(i\)</span>开始的长度为<span class="math inline">\(2^j\)</span>的子串在长度为<span class="math inline">\(2^j\)</span>的子串中的排名。当<span class="math inline">\(2^j \geq len\)</span>时，其实该数组就等于了后缀数组中的<code>rank[]</code>。</p>
+<p>那么，我们便只需要迭代地更新<code>rk[][]</code>数组即可。对于<code>rk[i][j]</code>，其代表的是从<span class="math inline">\(i\)</span>开始的长度为<span class="math inline">\(2^j\)</span>的子串，那么，<span class="math inline">\(rk[i][j-1]\)</span>其实就可以作为它的第一关键字，而<span class="math inline">\(rk[i+2^{j-1}][j-1]\)</span>则是第二关键字。我们按照这些关键字机型排序即可。</p>
+<p>倘若我们排序时使用快速排序，那么该算法的时间复杂度便为<span class="math inline">\(O(n \log ^ 2 n)\)</span>。不过倘如该串是一个字符串或者其它取值范围较小的串，那么我们便可以用奇数排序，这样时间复杂度便变为了<span class="math inline">\(O(n \log n)\)</span>。</p>
+<blockquote>
+<p>PS: 除了倍增法，还有速度更快的时间复杂度为<span class="math inline">\(O(n)\)</span>的DC3算法，不过编程难度很高，所以一般不使用。此外，还可以使用hash，对所有的后缀子串进行hash然后排序，其也可以实现<span class="math inline">\(O(n \log ^2 n)\)</span>的时间复杂度，但是不稳定。</p>
+</blockquote>
+<h2 id="实现细节">实现细节</h2>
+<p>我们假设是对一个字符串<code>s[]</code>进行处理，那么我们在这里便使用基数排序。使用<code>buc[]</code>来作基数排序的桶，<code>a-z</code>分别映射<code>1-26</code>。因为我们是迭代更新，所以<code>rk[][]</code>完全可以使用一位数组<code>rank[]</code>代替。不过由于<code>rank[]</code>是保留字，所以我们使用<code>rk[]</code>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//先做一边基数排序，算出各自的排名</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">    buc[ s[i] - <span class="string">&#x27;a&#x27;</span> + <span class="number">1</span> ] ++;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i  = <span class="number">1</span>; i&lt;MAXNCHAR; i++)</span><br><span class="line">    buc[i] += buc[i<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//利用基数排序的答案来更新rank[]数组</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">    rk[i] = buc[ a[i] - <span class="string">&#x27;a&#x27;</span> ] + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//枚举不同的长度，需要log(n)次运算</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> t = <span class="number">1</span>; t &lt;= n; t *= <span class="number">2</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//更新第一和第二关键字</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        first[i] = rk[i];</span><br><span class="line">        second[i] = i+t&gt;n? <span class="number">0</span> : rk[i+t];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将buc[]数组清0</span></span><br><span class="line">    fill(buc, buc+n+<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//按照第二关键字进行一次基数排序</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        buc[ second[i]] ++;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        buc[i] += buc[i<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//用tmp[]来存储按照第二关键字排序的名次，这里我们得到的结果为从大到小排序</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        tmp[ n - --buc[ second[i] ] ] = i;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将buc[]清0</span></span><br><span class="line">    fill(buc, buc+n+<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//按照第一关键字进行基数排序</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        buc[ first[i] ] ++;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        buc[i] += buc[i<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//按照第二关键字排好序的顺序来用buc[]更新sa[]数组，这样可以确保在first[]相同时，second[]最小的子串能够排在后面</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>,j; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        j = tmp[i];</span><br><span class="line">        sa[ buc[first[j]]-- ] = j;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//一个优化：当前如果没有first[]和second[]相同的子串直接退出，因为此时已经等价于最终答案</span></span><br><span class="line">    <span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">//使用sa[]来更新rk[]数组</span></span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j = sa[i];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!k)</span><br><span class="line">            rk[j] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (first[j]==first[k] &amp;&amp; second[j]==second[k])</span><br><span class="line">        &#123;</span><br><span class="line">            rk[j] = rk[k];</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span></span><br><span class="line">            rk[j] = rk[k] + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        k = j;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (flag)</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="性质">性质</h2>
+<h3 id="height数组"><code>height[]</code>数组</h3>
+<p>我们定义<code>height[i]</code>为<span class="math inline">\(suffix(sa[i])\)</span>和<span class="math inline">\(suffix(sa[i-1])\)</span>的最长公共前缀长度。很明显，对于一个后缀子串，在<code>sa[]</code>数组中离他越近的最长公共前缀越长。</p>
+<p>我们可以利用这个性质。我们假设<code>h[i] = height[ rank[i] ]</code>。那么此时便会存在一个性质<span class="math inline">\(h[i] \geq h[i-1] - 1\)</span>。所以我们便可以利用此性质<span class="math inline">\(O(n)\)</span>地计算出<code>height[]</code>数组。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, k = <span class="number">0</span>; i &lt;= n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (rk[i] == <span class="number">1</span>) k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (k &gt; <span class="number">0</span>) k--;</span><br><span class="line">        <span class="keyword">int</span> j = sa[rk[i] - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">while</span> (i + k &lt;= n &amp;&amp; j + k &lt;= n &amp;&amp; s[i - <span class="number">1</span> + k] == s[j - <span class="number">1</span> + k]) </span><br><span class="line">            k++;</span><br><span class="line">    &#125;</span><br><span class="line">    height[rk[i]] = k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="lcp问题">LCP问题</h3>
+<p><code>height[]</code>数组只是计算出了相邻两个后缀子串地公共前缀。而当我们想要计算任意两个后缀字串的<strong>LCP(Longest Common Prefix)</strong>时该怎么办呢？这时候其实也需要利用<code>height[]</code>数组。</p>
+<p>对于<span class="math inline">\(LCP(suffix(i), suffix(j))\)</span>，其值其实就等于<span class="math inline">\(min( height[i+1], ..., height[j])\)</span>，这样，我们只需要维护一个RMQ即可。</p>
+<h2 id="例题">例题</h2>
+<h3 id="luogu-3809">Luogu 3809</h3>
+<p>题目来源：<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P3809"><em>luogu</em></a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000100</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXM 62</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> buc[MAXN];</span><br><span class="line"><span class="keyword">int</span> sa[MAXN];</span><br><span class="line"><span class="keyword">int</span> rk[MAXN], tmp[MAXN];</span><br><span class="line"><span class="keyword">int</span> first[MAXN], second[MAXN];</span><br><span class="line"><span class="built_in">string</span> s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">trans</span><span class="params">(<span class="keyword">char</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (c&gt;=<span class="string">&#x27;0&#x27;</span> &amp;&amp; c&lt;=<span class="string">&#x27;9&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> c - <span class="string">&#x27;0&#x27;</span> + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (c&gt;=<span class="string">&#x27;A&#x27;</span> &amp;&amp; c&lt;=<span class="string">&#x27;Z&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> c - <span class="string">&#x27;A&#x27;</span> + <span class="number">11</span>;</span><br><span class="line">    <span class="keyword">if</span> (c&gt;=<span class="string">&#x27;a&#x27;</span> &amp;&amp; c&lt;=<span class="string">&#x27;z&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> c - <span class="string">&#x27;a&#x27;</span> + <span class="number">37</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n = s.length();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        buc[ trans(s[i<span class="number">-1</span>]) ] ++;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=MAXM; i++)</span><br><span class="line">        buc[i] += buc[i<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        rk[i] = buc[ trans(s[i<span class="number">-1</span>]) - <span class="number">1</span> ] + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> t = <span class="number">1</span>; t&lt;n; t *= <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            first[i] = rk[i];</span><br><span class="line">            second[i] = i+t&gt;n? <span class="number">0</span>: rk[i+t];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        fill(buc, buc+n+<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            buc[ second[i] ] ++;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            buc[i] += buc[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            tmp[ n - --buc[ second[i] ] ] = i;</span><br><span class="line"></span><br><span class="line">        fill(buc, buc+n+<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            buc[ first[i] ] ++;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            buc[i] += buc[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = tmp[i];</span><br><span class="line">            sa[ buc[first[j]]-- ] = j;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//不加这个优化就会TLE</span></span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = sa[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!k)</span><br><span class="line">                rk[j] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (first[j]==first[k] &amp;&amp; second[j]==second[k])</span><br><span class="line">            &#123;</span><br><span class="line">                rk[j] = rk[k];</span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                rk[j] = rk[k] + <span class="number">1</span>;</span><br><span class="line">                <span class="comment">// rk[j] = (first[j]==first[k] &amp;&amp; second[j]==second[k])?</span></span><br><span class="line">                    <span class="comment">// rk[k] : rk[k] + 1;</span></span><br><span class="line"></span><br><span class="line">            k = j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (flag)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; sa[i] &lt;&lt; (i==n? <span class="string">&quot;\n&quot;</span>: <span class="string">&quot; &quot;</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="poj-2774">POJ 2774</h3>
+<p>题目来源：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=2774"><em>POJ</em></a></p>
+<p>这题就算是一个LCP问题了，我们只需要将两个字符串合为一个，然后利用<code>height[]</code>数组求即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 200100</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXM 62</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> buc[MAXN];</span><br><span class="line"><span class="keyword">int</span> sa[MAXN];</span><br><span class="line"><span class="keyword">int</span> rk[MAXN], tmp[MAXN];</span><br><span class="line"><span class="keyword">int</span> first[MAXN], second[MAXN];</span><br><span class="line"><span class="keyword">int</span> height[MAXN];</span><br><span class="line"><span class="built_in">string</span> s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">trans</span><span class="params">(<span class="keyword">char</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (c&gt;=<span class="string">&#x27;a&#x27;</span> &amp;&amp; c&lt;=<span class="string">&#x27;z&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> c - <span class="string">&#x27;a&#x27;</span> + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">28</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">    <span class="keyword">int</span> slen = s.length();</span><br><span class="line">    s += <span class="string">&quot;$&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> ss;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; ss;</span><br><span class="line">    s += ss;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n = s.length();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        buc[ trans(s[i<span class="number">-1</span>]) ] ++;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=MAXM; i++)</span><br><span class="line">        buc[i] += buc[i<span class="number">-1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        rk[i] = buc[ trans(s[i<span class="number">-1</span>]) - <span class="number">1</span> ] + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> t = <span class="number">1</span>; t&lt;n; t *= <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            first[i] = rk[i];</span><br><span class="line">            second[i] = i+t&gt;n? <span class="number">0</span>: rk[i+t];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        fill(buc, buc+n+<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            buc[ second[i] ] ++;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            buc[i] += buc[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            tmp[ n - --buc[ second[i] ] ] = i;</span><br><span class="line"></span><br><span class="line">        fill(buc, buc+n+<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            buc[ first[i] ] ++;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            buc[i] += buc[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = tmp[i];</span><br><span class="line">            sa[ buc[first[j]]-- ] = j;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//不加这个优化就会TLE</span></span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = sa[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!k)</span><br><span class="line">                rk[j] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (first[j]==first[k] &amp;&amp; second[j]==second[k])</span><br><span class="line">            &#123;</span><br><span class="line">                rk[j] = rk[k];</span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                rk[j] = rk[k] + <span class="number">1</span>;</span><br><span class="line">                <span class="comment">// rk[j] = (first[j]==first[k] &amp;&amp; second[j]==second[k])?</span></span><br><span class="line">                    <span class="comment">// rk[k] : rk[k] + 1;</span></span><br><span class="line"></span><br><span class="line">            k = j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (flag)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">memset</span>(height, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, k = <span class="number">0</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (rk[i] == <span class="number">1</span>) k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (k &gt; <span class="number">0</span>) k--;</span><br><span class="line">            <span class="keyword">int</span> j = sa[rk[i] - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">while</span> (i + k &lt;= n &amp;&amp; j + k &lt;= n &amp;&amp; s[i - <span class="number">1</span> + k] == s[j - <span class="number">1</span> + k]) </span><br><span class="line">                k++;</span><br><span class="line">        &#125;</span><br><span class="line">        height[rk[i]] = k;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        <span class="keyword">if</span>((sa[rk[i]]&gt;slen&amp;&amp;sa[rk[i]<span class="number">-1</span>]&lt;slen)||(sa[rk[i]]&lt;slen&amp;&amp;sa[rk[i]<span class="number">-1</span>]&gt;slen))</span><br><span class="line">            ans=max(ans,height[rk[i]]);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/Code/Cosmic Cleaner [计算几何]/" data-toggle="tooltip" data-placement="top"
+                           title="Cosmic Cleaner [计算几何]">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/Code/Wrong Answer [数学，构造题]/" data-toggle="tooltip" data-placement="top"
+                           title="Wrong Answer [数学，构造题]">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84"><span class="toc-text">[学习笔记]后缀数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D"><span class="toc-text">算法介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%8D%E5%A2%9E%E6%B3%95"><span class="toc-text">倍增法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="toc-text">实现细节</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%B4%A8"><span class="toc-text">性质</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#height%E6%95%B0%E7%BB%84"><span class="toc-text">height[]数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lcp%E9%97%AE%E9%A2%98"><span class="toc-text">LCP问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-text">例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#luogu-3809"><span class="toc-text">Luogu 3809</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#poj-2774"><span class="toc-text">POJ 2774</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Songer 2021
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://songer.xyz/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="">
+</body>
+
+</html>

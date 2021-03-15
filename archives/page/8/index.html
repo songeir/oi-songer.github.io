@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="念念不忘，必有回响">
+    <meta name="keyword" content="c++, cpp, acm, algorithm, haskell">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="/images/ico.ico">
+    <link rel="alternate" type="application/atom+xml" title="Songer" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        Songer
+        
+    </title>
+
+    <link rel="canonical" href="http://songer.xyz/archives/page/8/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/images/logo.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Songer
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+
+<!-- Page Header -->
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 visible-xs-block visible-sm-block">
+    <div class="row">
+        <header class="intro-header">
+            <div class="container">
+                <div class="site-heading text-center">
+                    <div class="about-me">
+                        <!--移动端头部显示-->
+                        <img src=""/>
+                        <h5><a href="/about/">Songer</a></h5>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+</div>
+<!-- Main Content -->
+<div class="container custom-haojen-container">
+    <!-- Post Container -->
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
+            <!-- Main Content -->
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Code/Tree Constructing/">
+        <h2 class="post-title">
+            Tree Constructing
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-07-05
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                Tree Constructing
+CF 494 E
+
+这次是div3的题目，本身没有涉及到什么复杂的算法，可以说就是一道模拟题。不过细节还是很多的，需要注意。比赛时因为漏掉了一个细节结果比赛后被hack了，否则这次div3能排到一百多名(〒▽〒)。。。。
+
+
+题解
+题目要求给定顶点数n,直径d..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Haskell/lambda与折叠/">
+        <h2 class="post-title">
+            lambda与折叠
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-06-24
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                lambda与折叠
+
+一个已经一个半月没有更过的系列。。。。折叠比较难以理解，需要多花时间来学习一下，这篇博客的篇幅应该也会比较长。
+
+
+参考书籍: Learn you a Haskell
+lambda
+lambda在Haskell中就是指一次性的佚名函数。当我们想使用一个函数但是不想再去定义它..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Diary/大一下第十七周/">
+        <h2 class="post-title">
+            大一下第十七周
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-06-24
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                大一下第十七周
+2018 6 24
+
+最近总算是忙完了大部分的期末考试，只剩了英语一科，打算开始认真学些东西。结果在我看codeforces最近的比赛的时候，我发现了一个叫Microsoft Quantum Summer 2018 Q# Coding Contest的比赛。之前就听说了过Q#语言..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Code/世界线修复计划/">
+        <h2 class="post-title">
+            世界线修复计划
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-06-13
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                世界线修复计划
+HITwh OJ 43
+
+题目来源: HITwh OJ
+思路
+其实总体而言，是一个比较水的题目。题目要求将一个树分割为两个子树，并且两个子树的各点权值之和的差最小。
+很明显，我们可以在建树过程中直接记录以每一个节点为根节点的子树的权值和，然后再枚举一边，找到和所有节点的总权值的一..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Haskell/map与filter函数/">
+        <h2 class="post-title">
+            map与filter函数
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-06-13
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                map与filter函数
+
+快两个月没有更Haskell了，最近也一直没有学。现在劳动节放假，趁有时间更一些。
+
+
+参考书籍: Learn you a Haskell
+map
+map取一个函数和一个列表作为参数，它会将这个函数应用到这个列表中的每个元素，产生一个新的列表。下面为它的定义: 123..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Code/Fireworks/">
+        <h2 class="post-title">
+            Fireworks
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-06-13
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                Fireworks
+POJ 1426
+
+最近一个多月没有更新过博客了。。。虽然上个月做题的题量还不算太少，但是都没有写博客。最近这两周考试有比较多，而我又比较懒，所以一直耽搁下来了。今天可能会把一千做过的题目整理一下，多发几个博客。题目难度可能不一，因为最近做的难题不是很多。
+
+
+题目来源： v..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Code/ACM SD 2017 C/">
+        <h2 class="post-title">
+            ACM SD 2017 C
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-06-13
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                ACM SD 2017 C
+
+好像是除了签到题外最水的一题 ，做题时思路还算是清晰，但是第一次做时想错了。
+
+
+题目来源: sdibt
+分析
+题目给出了n个点，然后每秒钟每个点会分裂为两个点，分别移动到其左边和右边。即对于第t秒时存在一个点的位置为x，那么在t+1秒时便存在两个由其分裂出来的点在..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Code/Prime Path/">
+        <h2 class="post-title">
+            Prime Path
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-06-13
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                Prime Path
+POJ 3126
+
+这道题也可以算是到水题吧。搜索加上求素数，这里用的是线性筛。
+
+
+题目来源: vjudge | POJ
+分析
+题目要求很简单，给定一个起点和终点，要求用最短的步数到达。每改变一个数算作一步，并且在改变后要求仍然为素数。所以先算出所有素数，然后进行暴力BF..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Diary/记在2018年山东省ACM省赛之后/">
+        <h2 class="post-title">
+            记在2018年山东省ACM省赛之后
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-05-07
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                记在2018年山东省ACM省赛之后
+
+真的是突然之间迎来了ACM的省赛。一次校赛后突然要求我找两个人组队，然后我在见都没见过的前提下钦定(雾)了两个看起来还熟悉的人做了队友，然后隔了18天就迎来了山东省的省赛。
+这次比赛，emmm，怎么说呢，发挥的不算理想。比赛前的热身赛时抱着队友的大腿拿到了2..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Code/冬马和纱的博弈游戏/">
+        <h2 class="post-title">
+            冬马和纱的博弈游戏
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-04-29
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                冬马和纱的博弈游戏
+
+题目来源: HITwh OJ
+思路
+首先，我们知道，该题目的最终答案与\(\%3\)后的数值有关，所以我们可以得知，对于读入的每一个数，我们对其\(\%3\)后不影响其数值。
+此外，我们可以明显的得出，\(\%3\)后相同的数值具有相同的属性，所以我们总共只有三种数值\(0..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+
+<!-- 翻页 pager -->
+
+<ul class="pager">
+    
+    <li class="previous">
+        <a href="/archives/page/7/">&larr; Newer Posts</a>
+    </li>
+    
+    
+    <li class="next">
+        <a href="/archives/page/9/">Older Posts &rarr;</a>
+    </li>
+    
+</ul>
+
+
+        </div>
+        <!-- Sidebar Container -->
+        <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+
+            <!-- About Me -->
+            <section class="visible-md visible-lg" style="padding: 0 18px">
+                <div class="short-about">
+                    <!--侧边栏头像-->
+                    
+                    <h5><a href="/about/">Songer</a></h5>
+                    
+                    <hr>
+                    <!-- SNS Link 社交 -->
+                    <ul class="list-inline">
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Featured Tags  标签 -->
+            
+            <section>
+                <div class="tags">
+                    
+                </div>
+            </section>
+            
+
+            
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Songer 2021
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://songer.xyz/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="">
+</body>
+
+</html>

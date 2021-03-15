@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="念念不忘，必有回响">
+    <meta name="keyword" content="c++, cpp, acm, algorithm, haskell">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="/images/ico.ico">
+    <link rel="alternate" type="application/atom+xml" title="Songer" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        Codeforeces Edu 37 D｜Songer
+        
+    </title>
+
+    <link rel="canonical" href="http://songer.xyz/Code/Codeforeces Edu 37 D/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/images/logo.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Songer
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Codeforeces Edu 37 D</h1>
+                    
+                    <span class="meta">
+                         作者 Songer
+                        <span>
+                          日期 2018-02-18
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Codeforeces Edu 37 D
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="codeforeces-edu-37-d">Codeforeces Edu 37 D</h1>
+<blockquote>
+<p>|这题真的是一点思路也没有，好不容易看懂了题解写完了，结果发现理解出了偏差（；´д｀）ゞ</p>
+</blockquote>
+<span id="more"></span>
+<p>题目来源: <a target="_blank" rel="noopener" href="http://codeforces.com/contest/920/problem/D"><em>Codeforces</em></a></p>
+<h2 id="题解">题解</h2>
+<h3 id="思路">思路</h3>
+<p>在计算怎么转移之前，我们需要先判断是否能够转移出水的体积为<code>V</code>的水桶。</p>
+<p>那么，首先我们可以得出，对于$ sum = ^n_{i=1}{v[i]} <span class="math inline">\(，若\)</span>sum&lt;V$则不可能。</p>
+<p>然后我们判断什么时候可以转移。我们可以发现当$ V%k == 0$时，我们永远可以得到一个水的体积为<code>V</code>的水桶。</p>
+<p>而当<code>V</code>不是<code>k</code>的整数倍时，<code>V</code>中<span class="math inline">\(V\%k\)</span>这一部分肯定能够从其它桶凑出。只有此时能够得到一个体积为<code>V</code>的水桶。</p>
+<p>然后我们便需要算出是否有几个水桶水量的和能够与<code>V</code>同余。这里我们需要用到简单的动态规划(但我还是把它忘了。。。)。使用<code>dp[i][j]</code>记录到第<code>i</code>个数是否能取到同余<code>k</code>为<code>j</code>的值。</p>
+<p>最后只要输出移动方法就行了。因为改题目非固定答案，所以我们可以"套模板",即使用麻烦但是能够达成效果的方法进行移动。</p>
+<p>我们可以使用一个<code>flag[i][j]</code>来记录在到达位置<code>i</code>且<code>%k==j</code>时是否取了<code>i</code>这个位置的数。</p>
+<p>然后我们把所有取了的数移到一个位置<code>x</code>，没有取的移到一个位置<code>y</code>,再用<code>y</code>把<code>x</code>中的水加至体积为<code>V</code>便可以了。 ### 结论</p>
+<h4 id="判断">判断</h4>
+<ol type="1">
+<li><span class="math inline">\(sum &lt; V\)</span>时: NO</li>
+<li><span class="math inline">\(sum\%k==0\)</span>时: YES</li>
+<li>$ S<span class="math inline">\(使得\)</span>_{iS}{v[i]} V(k)$: YES</li>
+<li>Otherwise: NO</li>
+</ol>
+<blockquote>
+<p>(<span class="math inline">\(S\)</span>为取出的数的下标的集合)</p>
+<p>第2中情况其实可以直接被第三种情况包括，只要初始从<code>dp[0][0] = true</code>开始即可。</p>
+</blockquote>
+<h4 id="dp">DP</h4>
+<p>我们使用<code>dp[i][j]</code>来表示到第<code>i</code>个数时能否有取法<code>S</code>使得<span class="math inline">\(\sum_{i\in S}{v[i]} \equiv V(\mod k)\)</span>。那么转移方程如下: <span class="math display">\[ dp[i][j] = dp[i-1][j]\ || \ dp[i-1][Mod(j-v[i],k)]\]</span></p>
+<p>其中或运算符左边的是不取当前数值的情况，右边是取当前数值的情况。</p>
+<blockquote>
+<p>这里使用自己写的<code>Mod()</code>函数是为了防止<code>CPP</code>的<code>%</code>算出负值。</p>
+<p>在<code>f[i][Mod(j-v[i],k)]</code>为<code>True</code>时<code>flag[i][j]</code>为<code>True</code></p>
+</blockquote>
+<h4 id="转移步骤">转移步骤</h4>
+<h2 id="代码">代码</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> dp[<span class="number">5010</span>][<span class="number">5010</span>];</span><br><span class="line"><span class="keyword">bool</span> flag[<span class="number">5010</span>][<span class="number">5010</span>];</span><br><span class="line"><span class="keyword">int</span> v[<span class="number">5010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Mod</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (a&lt;<span class="number">0</span>)</span><br><span class="line">		a += b;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> a%b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="literal">false</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	<span class="built_in">memset</span>(flag,<span class="literal">false</span>,<span class="keyword">sizeof</span>(flag));</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> n,k,V,sum = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;n,&amp;k,&amp;V);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;v[i]);</span><br><span class="line">		sum += v[i];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (sum&lt;V)				<span class="comment">//sum&lt;V时输出NO</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="literal">true</span>;			<span class="comment">//初始值</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j&lt;k; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (dp[i<span class="number">-1</span>][j])				<span class="comment">//当前数值不取的情况</span></span><br><span class="line">				dp[i][j] = <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (dp[i<span class="number">-1</span>][Mod(j-v[i],k)])		<span class="comment">//取当前数值的情况</span></span><br><span class="line">			&#123;</span><br><span class="line">				dp[i][j] = <span class="literal">true</span>;</span><br><span class="line">				flag[i][j] = <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	for (int i = 1; i&lt;=n; i++)</span></span><br><span class="line"><span class="comment">	&#123;</span></span><br><span class="line"><span class="comment">		for (int j = 0; j&lt;k; j++)</span></span><br><span class="line"><span class="comment">			printf(&quot;%d &quot;,dp[i][j]);</span></span><br><span class="line"><span class="comment">		printf(&quot;\n&quot;);</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">if</span> (dp[n][V%k])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> t1=<span class="number">0</span>,t2=<span class="number">0</span>;	<span class="comment">//分别代表取了的数和没取的数转移到的位置</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> j = V%k,i=n;</span><br><span class="line">		<span class="keyword">while</span>(i&gt;<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (v[i]==<span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				i--;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (flag[i][j])</span><br><span class="line">			&#123;</span><br><span class="line">				j = Mod(j-v[i],k);</span><br><span class="line">				<span class="keyword">if</span> (!t1)</span><br><span class="line">					t1 = i;</span><br><span class="line">				<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">&quot;%d %d %d\n&quot;</span>,(v[i]+k<span class="number">-1</span>)/k,i,t1);</span><br><span class="line">					v[t1] += v[i];</span><br><span class="line">					v[i] = <span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">if</span> (!t2)</span><br><span class="line">					t2 = i;</span><br><span class="line">				<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="built_in">printf</span>(<span class="string">&quot;%d %d %d\n&quot;</span>,(v[i]+k<span class="number">-1</span>)/k,i,t2);</span><br><span class="line">					v[t2] += v[i];</span><br><span class="line">					v[i] = <span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			i--;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (V%k==<span class="number">0</span> &amp;&amp; V!=<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (t2!=<span class="number">1</span>)	t1=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> t1 = <span class="number">2</span>;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%d %d %d\n&quot;</span>,V/k,t2,t1);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (t1 &amp;&amp; V!=v[t1])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (!t2)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (t1==<span class="number">1</span>)	t2=<span class="number">2</span>;</span><br><span class="line">				<span class="keyword">else</span> t2 = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (v[t1]&lt;V)</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">&quot;%d %d %d\n&quot;</span>,(V-v[t1])/k,t2,t1);</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d %d %d\n&quot;</span>,(v[t1]-V)/k,t1,t2);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;NO&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/Code/Luogu 1156/" data-toggle="tooltip" data-placement="top"
+                           title="Luogu 1156">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/Code/CF 461 D/" data-toggle="tooltip" data-placement="top"
+                           title="CF 461 D">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#codeforeces-edu-37-d"><span class="toc-text">Codeforeces Edu 37 D</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD"><span class="toc-text">判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dp"><span class="toc-text">DP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AC%E7%A7%BB%E6%AD%A5%E9%AA%A4"><span class="toc-text">转移步骤</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Songer 2021
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://songer.xyz/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="">
+</body>
+
+</html>

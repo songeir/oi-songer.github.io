@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="念念不忘，必有回响">
+    <meta name="keyword" content="c++, cpp, acm, algorithm, haskell">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="/images/ico.ico">
+    <link rel="alternate" type="application/atom+xml" title="Songer" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        Songer
+        
+    </title>
+
+    <link rel="canonical" href="http://songer.xyz/archives/2018/page/6/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/images/logo.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "false" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Songer
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+
+<!-- Page Header -->
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 visible-xs-block visible-sm-block">
+    <div class="row">
+        <header class="intro-header">
+            <div class="container">
+                <div class="site-heading text-center">
+                    <div class="about-me">
+                        <!--移动端头部显示-->
+                        <img src=""/>
+                        <h5><a href="/about/">Songer</a></h5>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+</div>
+<!-- Main Content -->
+<div class="container custom-haojen-container">
+    <!-- Post Container -->
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
+            <!-- Main Content -->
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/C#/数据成员，函数成员/">
+        <h2 class="post-title">
+            数据成员，函数成员
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-03-08
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                数据成员，函数成员
+
+参考书籍: 《C#高级编程》
+数据成员
+类中可以定义数据成员。默认的情况下，该成员为实例成员，除非使用static显式声明。
+函数成员
+方法
+在C#术语中，函数成员除方法外仍包括类或结构中的一些非数据成员，如索引器，运算符，构造函数和析构函数等，甚至还有属性。所以方法与函数..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Haskell/递归/">
+        <h2 class="post-title">
+            递归
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-03-08
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                递归
+
+因为递归本身也很熟悉了，所以不再细讲，主要列几个Haskell中应用递归的函数样例。注意，由于Haskell中用递归来实现循环的功能，所以有些递归看着有些别扭，需要适应。
+
+
+参考书籍: Learn you a haskell
+求数列中最大值
+1234maximum&#x27; :: (..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Haskell/where/">
+        <h2 class="post-title">
+            where
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-03-08
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                where,let,case
+
+参考书籍: Learn you a haskell
+where
+用法
+在编程时，我们希望避免重复计算同一个值，但我们也都知道，在Haskell中并不存在变量，那我们一般怎么存储呢？where便是我们常用的关键字。比如，我们现在实现一个计算语数英三科分数之和并判断等..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Code/字符串匹配/">
+        <h2 class="post-title">
+            字符串匹配
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-03-03
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                字符串匹配
+Code[VS] 1404
+
+本来以为是一个标准的KMP模板题，结果写着写着才发现这道题的重点在别处。用到了KMP算法，但是最重要的还是考验思维能力。
+
+
+题目来源: code[VS]
+分析
+题目要求对于给定的x，输出字符串b在字符串a中匹配长度恰为x的数目。这道题我本来时打算当作K..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Code/Luogu 3375/">
+        <h2 class="post-title">
+            Luogu 3375
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-03-03
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                Luogu 3375
+
+KMP算法，准确的说是KM算法，遥想很久以前写过一次，后来就再也没有动过了。现在差不多也已经忘记怎么写了，重新学习以下。
+
+
+例题是Luogu上的一道模板题，以前做过一次，只得了70分。这次又做了一遍，结果我已经无力吐槽了。用gets()读入字符串0分，自己用getcha..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Code/传纸条/">
+        <h2 class="post-title">
+            传纸条
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-03-03
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                传纸条
+
+比较简单的四维棋盘动归，只要能想明白，还是蛮好写的。
+
+
+题目来源:Luogu
+设两个人同时从(0,0)点出发，我们用i,j来表示第一个人的坐标，用k,l表示第二个人的坐标，我们只需要确定两个人不会重叠，然后进行DP就好了。 比如，我们假设(i,j)在(k,l)”上面“，则最终状态为f..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Code/Luogu 1156/">
+        <h2 class="post-title">
+            Luogu 1156
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-03-03
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                Luogu 1156
+
+这题还算是比较简单，看着便有些思路。感觉和背包问题比较像。
+
+
+题目来源: Luogu
+题解
+由题目可得，我们想要到达的最终状态是高度为0，而这个过程中我们需要确保生命值大于0。也就是说，这道题目中存在的分支是吃掉垃圾(增加生命值)还是堆垃圾(增加高度)。而类比于背包问题..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Code/Codeforeces Edu 37 D/">
+        <h2 class="post-title">
+            Codeforeces Edu 37 D
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-02-18
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                Codeforeces Edu 37 D
+
+|这题真的是一点思路也没有，好不容易看懂了题解写完了，结果发现理解出了偏差（；´д｀）ゞ
+
+
+题目来源: Codeforces
+题解
+思路
+在计算怎么转移之前，我们需要先判断是否能够转移出水的体积为V的水桶。
+那么，首先我们可以得出，对于$ sum =..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/Code/CF 461 D/">
+        <h2 class="post-title">
+            CF 461 D
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-02-18
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                CF 461 D
+
+作为D题来说是比较水的了，但是最后因为最后答案用int存不开，所以在比赛时并没有A掉。
+
+
+题解
+题目要求给出指定个由s和h组成的字符串，怎样将这些字符串排列可以使得sh对最多。一个sh对存在当且仅当s的下标在h前。最后只需输出sh对的数目即可。
+因此，我们可以发现最终的an..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+<div class="post-preview "
+     style="background-image: url('')">
+    <a href="/C#/控制台I/">
+        <h2 class="post-title">
+            控制台I
+        </h2>
+        <p class="post-meta">
+            <i class="fa fa-calendar" aria-hidden="true"></i> 2018-02-12
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                控制台I/O，注释，预处理器指令
+
+参考书籍: 《C#高级编程》
+控制台I/O
+c#中控制台的输入与输出通过Console类的几个静态方法实现。
+若想要从控制台窗口中读取一行文本，可以使用Console.ReadLine()方法，它会从控制台窗口中读入一个输入流(在用户按回车时截止)，并返回输入..
+            </p>
+        </div>
+    </a>
+
+</div>
+
+<hr>
+
+
+
+
+<!-- 翻页 pager -->
+
+<ul class="pager">
+    
+    <li class="previous">
+        <a href="/archives/2018/page/5/">&larr; Newer Posts</a>
+    </li>
+    
+    
+    <li class="next">
+        <a href="/archives/2018/page/7/">Older Posts &rarr;</a>
+    </li>
+    
+</ul>
+
+
+        </div>
+        <!-- Sidebar Container -->
+        <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+
+            <!-- About Me -->
+            <section class="visible-md visible-lg" style="padding: 0 18px">
+                <div class="short-about">
+                    <!--侧边栏头像-->
+                    
+                    <h5><a href="/about/">Songer</a></h5>
+                    
+                    <hr>
+                    <!-- SNS Link 社交 -->
+                    <ul class="list-inline">
+                        
+                        
+                        
+
+                        
+
+                        
+
+                        
+
+                        
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Featured Tags  标签 -->
+            
+            <section>
+                <div class="tags">
+                    
+                </div>
+            </section>
+            
+
+            
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Songer 2021
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://songer.xyz/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="">
+</body>
+
+</html>

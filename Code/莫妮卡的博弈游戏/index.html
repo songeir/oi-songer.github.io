@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="念念不忘，必有回响">
+    <meta name="keyword" content="c++, cpp, acm, algorithm, haskell">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#600090">
+    <link rel="shortcut icon" href="/images/ico.ico">
+    <link rel="alternate" type="application/atom+xml" title="Songer" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
+    <title>
+        
+        莫妮卡的博弈游戏｜Songer
+        
+    </title>
+
+    <link rel="canonical" href="http://songer.xyz/Code/莫妮卡的博弈游戏/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/blog-style.css">
+
+
+    <!-- Pygments Github CSS -->
+    
+<link rel="stylesheet" href="/css/syntax.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<style>
+
+    header.intro-header {
+        background-image: url('/images/logo.jpg')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated pulse" href="/">
+                <span class="brand-logo">
+                    Songer
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+					
+                    
+                        
+                    
+                        
+                    
+					
+					
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+//    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+<!-- Main Content -->
+
+<!--only post-->
+
+
+<img class="wechat-title-img"
+     src="">
+
+
+<style>
+    
+    header.intro-header {
+        background-image: url('')
+    }
+
+    
+</style>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>莫妮卡的博弈游戏</h1>
+                    
+                    <span class="meta">
+                         作者 Songer
+                        <span>
+                          日期 2018-08-28
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            莫妮卡的博弈游戏
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+                <h1 id="莫妮卡的博弈游戏">莫妮卡的博弈游戏</h1>
+<h1 id="hitwh-23">HITwh 23</h1>
+<blockquote>
+<p>我是多久没写过题解了，感觉自己已经快要废掉了(≧﹏ ≦)</p>
+</blockquote>
+<span id="more"></span>
+<p>题目来源：<a target="_blank" rel="noopener" href="http://10.245.130.74:81/problem/23/">HITwh OJ</a>(学校内网的oj，外网不能访问。。。。。)</p>
+<p>时间限制: 1000ms 内存限制: 64M</p>
+<h3 id="题目描述">题目描述</h3>
+<p>你最近从Steam上下载了一款名为《心跳文学社》的游戏，然后你开始玩，但逐渐地你发现一个问题，无论你使用什么方法，你都无法攻略游戏中一个名为莫妮卡的角色。随着游戏的进行，你发现你逐渐地无法控制游戏的走向，更糟糕的是，你发现莫妮卡十分清楚她正处于一个游戏当中，接着她破坏了你的游戏存档文件。为了拯救你的存档，你决定与莫妮卡玩一个游戏，如果你获胜了就可以恢复你的存档文件。</p>
+<p>游戏规则是这样的：在你面前有<span class="math inline">\(N\)</span>个单词，每一个单词都有一个类似好感值的属性<span class="math inline">\(X_i\)</span>，你和你莫妮卡轮流进行每个回合的操作。在每个回合中，玩家必须从这<span class="math inline">\(N\)</span>个单词中选择两个，然后把这两个单词组合成一个新的单词，假设之前的两个单词的好感值分别为<span class="math inline">\(X_a\)</span>与<span class="math inline">\(X_b\)</span>，那么新单词的好感值可以是$ X_a − X_b <span class="math inline">\(或者\)</span> X_b − X_a $。游戏将持续进行直到只剩下一个单词，这个单词的好感值Xf将决定游戏的胜负。</p>
+<p>如果$ X_f % 3==0 <span class="math inline">\(，那么当前回合进行操作的玩家失败； 如果\)</span> X_f % 3==1 <span class="math inline">\(，那么你获胜； 如果\)</span> X_f % 3==2 $，那么莫妮卡获胜。 注意，这里的取模运算是数学意义上的，比如说：<span class="math inline">\(3\%3=0\)</span>，<span class="math inline">\(1\%3=1\)</span>，<span class="math inline">\(−1\%3=2\)</span>，结果不会为负数。</p>
+<p>我们都知道，AI是十分聪明的，这意味着莫妮卡每次都会选择最佳的操作方式。而你为了拯救你的存档，你学习了博弈论的相关知识，这意味着你每次也会选择最佳的操作方式。</p>
+<p>现在你想知道对于一个给定的局面，谁将成为最后的胜利者。</p>
+<h3 id="输入">输入</h3>
+<p>输入包含多行。 第一行为一个整数<span class="math inline">\(T(1≤T≤233)\)</span>，代表测试用例的组数。 对于每组测试用例，第一行为两个整数，分别是单词的数量<span class="math inline">\(N (1≤N≤233)\)</span>和先进行操作的玩家<span class="math inline">\(F∈{0,1}\)</span>，如果<span class="math inline">\(F=0\)</span>，则你先进行操作，否则由莫妮卡先进行操作。 接下来的一行为N个整数，代表第i个单词的好感值<span class="math inline">\(X_i (−233≤Xi≤233)\)</span>。</p>
+<h3 id="输出">输出</h3>
+<p>对于每组测试用例，如果你能获胜，则在新的一行中输出"<code>WIN</code>"，否则输出"<code>LOST</code>"。 如果你觉得不能确定谁会获胜，就输出"<code>OUTPUT THIS TO GET WA</code>"。</p>
+<h3 id="样例输入">样例输入</h3>
+<blockquote>
+<p>3</p>
+</blockquote>
+<blockquote>
+<p>1 0</p>
+</blockquote>
+<blockquote>
+<p>9</p>
+</blockquote>
+<blockquote>
+<p>3 1</p>
+</blockquote>
+<blockquote>
+<p>1 2 3</p>
+</blockquote>
+<blockquote>
+<p>5 0</p>
+</blockquote>
+<blockquote>
+<p>1 3 5 7 9</p>
+</blockquote>
+<h3 id="样例输出">样例输出</h3>
+<blockquote>
+<p>LOST</p>
+</blockquote>
+<blockquote>
+<p>WIN</p>
+</blockquote>
+<blockquote>
+<p>LOST</p>
+</blockquote>
+<h2 id="题解">题解</h2>
+<p>这一题乍一看很复杂，但是其中其实可以找到很巧妙的规律。我们可以发现最后的答案是与<span class="math inline">\(\%3\)</span>的值有关的，也就是说，对于<code>n</code>个数<span class="math inline">\(\{x_1,x_2,x_3 ,\dots ,x_n\}\)</span>，我们可以将其转化为<span class="math inline">\(\{ x_1\%3 , x_2\%3 , x_3\%3 , \dots ,x_n\%3 \}\)</span>，而答案不变。在这种情况的基础下我们研究能够出现必胜策略的情况。</p>
+<h4 id="当n1时">当<span class="math inline">\(n==1\)</span>时</h4>
+<p>我们可以根据<span class="math inline">\(n,k,x_1\)</span>的值来推断谁能获胜。其方程如下：</p>
+<p><span class="math display">\[ Answer = \left\{
+\begin{aligned}
+WIN &amp; ， &amp; x_1\%3=1 \\
+LOST &amp; , &amp; x_1\%3=2 \\
+WIN &amp; ， &amp; k=1 \ \&amp;\&amp;\  x_1\%3=0 \\
+LOST &amp; ， &amp; k=0 \ \&amp;\&amp;\  x_1\%3=0 \\
+\end{aligned}
+\right. \]</span></p>
+<h4 id="当n2时">当<span class="math inline">\(n==2\)</span>时</h4>
+<p>对于<span class="math inline">\((x_1,x_2)\)</span>我们可以得出共有以下5种情况： <span class="math display">\[\{ (0,0) , (1,1) , (2,2) , (0,1) , (0,2) , (1,2) \}\]</span> 而因为我们只能进行减法运算，所以我们可以得出<span class="math inline">\(\{ (0,0),(1,1),(2,2)\}\)</span>,<span class="math inline">\(\{ (0,1),(1,2)\}\)</span>都是相等的，所以我们最后只有<span class="math inline">\(\{ (0,0),(0,1),(0,2)\}\)</span>三种情况。</p>
+<p>我们假设第一步由"我"来下，即<span class="math inline">\(k=0\)</span>。那么，对于以上三种情况： ##### (0,0) 因为下一局变为<span class="math inline">\((0)\)</span>,所以答案为<code>WIN</code> ##### (0,1) 我们有两种选择 $ 0-1 $ 和 $ 1-0 $ ,第一种<span class="math inline">\(\%3\)</span>后为<span class="math inline">\(2\)</span>,第二种为<span class="math inline">\(1\)</span>。因为我们总会选择最佳策略，所以肯定会选择<span class="math inline">\(1-0\)</span>，然后获胜。 ##### (0,2) 我们也有两种选择$ 0-2 $ 和 $ 2-0 $ ，第一种为<span class="math inline">\(2\)</span>,第二种<span class="math inline">\(\%3\)</span>后为<span class="math inline">\(1\)</span>。同理，我们会选择<span class="math inline">\(0-2\)</span>，所以我们一定能获胜。</p>
+<h4 id="总结">总结</h4>
+<p>当<span class="math inline">\(n==2\)</span>时，无论<span class="math inline">\(x_1,x_2\)</span>为多少，当前进行操作的人一定能获胜。</p>
+<p>所以当<span class="math inline">\(n&gt;2\)</span>时，我们不需要关注<span class="math inline">\(x_i\)</span>的数值，而只需要关注当最后选至<span class="math inline">\(n==2\)</span>时谁进行操作，即： <span class="math display">\[ Answer = \left\{
+\begin{aligned}
+WIN &amp; , &amp; (n+k)\%2=0\ ,\ n&gt;1 \\ 
+LOST &amp;, &amp; (n+k)\%2=1\ ,\ n&gt;1
+\end{aligned}
+\right.
+\]</span></p>
+<p>得出该结论后，代码就很简单了，如下： <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">    <span class="keyword">while</span>(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n,k;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">        <span class="keyword">int</span> x;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">        <span class="keyword">if</span> (n==<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (x%<span class="number">3</span>==<span class="number">1</span>)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;WIN\n&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (x%<span class="number">3</span>==<span class="number">2</span>)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;LOST\n&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (k==<span class="number">0</span>)</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;LOST\n&quot;</span>);</span><br><span class="line">                <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;WIN\n&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((n+k)%<span class="number">2</span>==<span class="number">1</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;LOST\n&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;WIN\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+
+                <hr>
+                
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/Code/Maze/" data-toggle="tooltip" data-placement="top"
+                           title="Maze">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/Code/H/" data-toggle="tooltip" data-placement="top"
+                           title="H">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+
+                
+
+
+                <!--加入新的评论系统-->
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col">
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%8E%AB%E5%A6%AE%E5%8D%A1%E7%9A%84%E5%8D%9A%E5%BC%88%E6%B8%B8%E6%88%8F"><span class="toc-text">莫妮卡的博弈游戏</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hitwh-23"><span class="toc-text">HITwh 23</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5"><span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%85%A5"><span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%87%BA"><span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%93n1%E6%97%B6"><span class="toc-text">当\(n&#x3D;&#x3D;1\)时</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%93n2%E6%97%B6"><span class="toc-text">当\(n&#x3D;&#x3D;2\)时</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5 class="text-center">
+                        <a href="/tags/">FEATURED TAGS</a>
+                    </h5>
+                    <div class="tags">
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- Footer -->
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Songer 2021
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://songer.xyz/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','','2.0.0');
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--wechat title img-->
+<img class="wechat-title-img" src="">
+</body>
+
+</html>
