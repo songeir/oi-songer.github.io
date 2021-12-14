@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Wash[贪心] - Songer</title>
+
+  
+    <meta name="description" content="Wash[贪心] hdu 6000  集训时的一道题，做的时候靠蒙找到了最优情况，实际上是可以严格的证明的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wash[贪心]">
+<meta property="og:url" content="https://blog.songer.xyz/Code/Wash[%E8%B4%AA%E5%BF%83]/">
+<meta property="og:site_name" content="Songer">
+<meta property="og:description" content="Wash[贪心] hdu 6000  集训时的一道题，做的时候靠蒙找到了最优情况，实际上是可以严格的证明的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-08-04T03:13:13.000Z">
+<meta property="article:modified_time" content="2021-12-14T16:39:44.681Z">
+<meta property="article:author" content="Songer">
+<meta property="article:tag" content="c++, cpp, acm, algorithm, haskell">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Songer" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/images/ico.ico">
+  
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/images/logo.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Songer</div><div class="sub cap">念念不忘，必有回响</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">项目</a><a class="nav-item" href="/more/">更多</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">发布于&nbsp;<time datetime="2018-08-04T03:13:13.000Z">2018-08-04</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Wash[贪心]</span></h1>
+<h1 id="wash贪心">Wash[贪心]</h1>
+<h1 id="hdu-6000">hdu 6000</h1>
+<blockquote>
+<div class="line-block">集训时的一道题，做的时候靠蒙找到了最优情况，实际上是可以严格的证明的。</div>
+</blockquote>
+<span id="more"></span>
+<h2 id="题解">题解</h2>
+<p>较为复杂的贪心算法，其难度也主要是集中在选择其贪心策略的问题上，或者说是对贪心策略正确性的证明上。所以我们集中来看这道题的贪心策略。</p>
+<p>题目给出了一个<code>w[]</code>数组和一个<code>d[]</code>数组，要求其中各取<code>L</code>个数，然后令其$ max( w_i + d_j )<span class="math inline">\(。所以我们的目标是找到一种组合情况，使得\)</span>w_i+d_j$的最大值最小。</p>
+<p>首先，对于从<code>w[]</code>和<code>d[]</code>数组中取出的<code>L</code>个数，我们肯定是要取出最小的<code>L</code>个。然后，我们可以粗略的看出，当我们的<code>w[]</code>越小时，我们取的<code>d[]</code>越大越好。因此，我们可以对<code>w[]</code>从小到大排序，<code>d[]</code>从大到小排序，然后每个各自相加即可。</p>
+<p>我们可以较为严格的证明一下: 假设我们已经按照如上顺序放好。那么，我们对于$ i,j (i &lt; j)<span class="math inline">\(, 其一定满足\)</span> w_i w_j , d_i d_j $，所以当我们调换顺序时，这两个数中的最大值一定会大于等于原来的最大值。并且这两个数的调换不会对其他数造成影响，所以我们明显不能调换，原来的顺序即使最佳情况。</p>
+<p>此外，还需要注意的一点: 对于此题，由于洗衣机和干洗机都可以重复使用，所以我们刚开始需要从中取出的<code>L</code>个数并不仅仅是排序后取前<code>L</code>个，而是需要考虑一个机子使用多次的情况，所以这里最好用优先队列，一个个的取出，然后再将下一次能够使用的时间放入。</p>
+<h2 id="代码">代码</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">true<span class="keyword">long</span> <span class="keyword">long</span> x,base;</span><br><span class="line"></span><br><span class="line">true<span class="built_in">Node</span>(<span class="keyword">long</span> <span class="keyword">long</span> x,<span class="keyword">long</span> <span class="keyword">long</span> base):<span class="built_in">x</span>(x),<span class="built_in">base</span>(base)	&#123;&#125;</span><br><span class="line"></span><br><span class="line">true<span class="keyword">const</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> Node &amp;tmp) <span class="keyword">const</span>&#123;</span><br><span class="line">truetrue<span class="keyword">return</span> x &gt; tmp.x;</span><br><span class="line">true&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> t1[<span class="number">1000100</span>],t2[<span class="number">1000100</span>];</span><br><span class="line">priority_queue&lt;Node&gt; q1,q2;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">true<span class="keyword">int</span> T;</span><br><span class="line">true<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;T);</span><br><span class="line"></span><br><span class="line">true<span class="keyword">for</span> (<span class="keyword">int</span> cas = <span class="number">1</span>; cas&lt;=T; cas++)</span><br><span class="line">true&#123;</span><br><span class="line">truetrueq1 = priority_queue&lt;Node&gt;();</span><br><span class="line">truetrueq2 = priority_queue&lt;Node&gt;();</span><br><span class="line"></span><br><span class="line">truetrue<span class="keyword">int</span> l,n,m;</span><br><span class="line">truetrue<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;l,&amp;n,&amp;m);</span><br><span class="line"></span><br><span class="line">truetrue<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">truetrue&#123;</span><br><span class="line">truetruetrue<span class="keyword">long</span> <span class="keyword">long</span> x;</span><br><span class="line">truetruetrue<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;x);</span><br><span class="line"></span><br><span class="line">truetruetrueq1.<span class="built_in">push</span>(<span class="built_in">Node</span>(x,x));</span><br><span class="line">truetrue&#125;</span><br><span class="line"></span><br><span class="line">truetrue<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=m; i++)</span><br><span class="line">truetrue&#123;</span><br><span class="line">truetruetrue<span class="keyword">long</span> <span class="keyword">long</span> x;</span><br><span class="line">truetruetrue<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;x);</span><br><span class="line"></span><br><span class="line">truetruetrueq2.<span class="built_in">push</span>(<span class="built_in">Node</span>(x,x));</span><br><span class="line">truetrue&#125;</span><br><span class="line"></span><br><span class="line">truetrue<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=l; i++)</span><br><span class="line">truetrue&#123;</span><br><span class="line">truetruetrueNode t = q1.<span class="built_in">top</span>();</span><br><span class="line">truetruetrueq1.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">truetruetruet1[i] = t.x;</span><br><span class="line">truetruetruet.x += t.base;</span><br><span class="line"></span><br><span class="line">truetruetrueq1.<span class="built_in">push</span>(t);</span><br><span class="line">truetrue&#125;</span><br><span class="line"></span><br><span class="line">truetrue<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=l; i++)</span><br><span class="line">truetrue&#123;</span><br><span class="line">truetruetrueNode t = q2.<span class="built_in">top</span>();</span><br><span class="line">truetruetrueq2.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">truetruetruet2[i] = t.x;</span><br><span class="line">truetruetruet.x += t.base;</span><br><span class="line"></span><br><span class="line">truetruetrueq2.<span class="built_in">push</span>(t);</span><br><span class="line">truetrue&#125;</span><br><span class="line"></span><br><span class="line">truetrue<span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">truetrue<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=l; i++)</span><br><span class="line">truetruetrueans = <span class="built_in">max</span>(ans, t1[i] + t2[l-i+<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">truetrue<span class="built_in">printf</span>(<span class="string">&quot;Case #%d: %lld\n&quot;</span>,cas,ans);</span><br><span class="line">true&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/Code/%E9%A3%9F%E7%89%A9%E9%93%BE%20%5BNOI%202005%5D/">食物链 [NOI 2005]<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/Code/Doing%20Homework%20again/">Doing Homework again<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="songeir/beaudar" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <span class="citation" data-cites="Songer">[@Songer]</span>(https://blog.songer.xyz/) 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

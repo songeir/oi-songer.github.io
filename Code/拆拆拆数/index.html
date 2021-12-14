@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>拆拆拆数 - Songer</title>
+
+  
+    <meta name="description" content="拆拆拆数 Wannafly Day 0 C  第一天唯一做出来的一道题。一道大分类讨论。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="拆拆拆数">
+<meta property="og:url" content="https://blog.songer.xyz/Code/%E6%8B%86%E6%8B%86%E6%8B%86%E6%95%B0/">
+<meta property="og:site_name" content="Songer">
+<meta property="og:description" content="拆拆拆数 Wannafly Day 0 C  第一天唯一做出来的一道题。一道大分类讨论。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-01-31T05:25:05.000Z">
+<meta property="article:modified_time" content="2021-12-14T16:39:44.685Z">
+<meta property="article:author" content="Songer">
+<meta property="article:tag" content="c++, cpp, acm, algorithm, haskell">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Songer" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/images/ico.ico">
+  
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/images/logo.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Songer</div><div class="sub cap">念念不忘，必有回响</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">项目</a><a class="nav-item" href="/more/">更多</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">发布于&nbsp;<time datetime="2019-01-31T05:25:05.000Z">2019-01-31</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>拆拆拆数</span></h1>
+<h1 id="拆拆拆数">拆拆拆数</h1>
+<h1 id="wannafly-day-0-c">Wannafly Day 0 C</h1>
+<blockquote>
+<p>第一天唯一做出来的一道题。一道大分类讨论。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="分析">分析</h2>
+<p>这道题就是一道构造题，我们需要将<code>x</code>和<code>y</code>分为<code>n</code>份，使得<span class="math inline">\(\sum_{i=1}^n a_i = x\)</span>,<span class="math inline">\(\sum_{i=1}^n b_i = y\)</span>,并且令<span class="math inline">\(n\)</span>尽可能地小。此时我们需要根据情况进行分类讨论。</p>
+<ol type="1">
+<li>当<span class="math inline">\(gcd(x,y)=1\)</span>时,这时候<span class="math inline">\(x\)</span>,<span class="math inline">\(y\)</span>互质，所以<span class="math inline">\(n\)</span>就为<span class="math inline">\(1\)</span>。所以直接输出<span class="math inline">\(x\)</span>和<span class="math inline">\(y\)</span>即可。</li>
+<li>当他们不互质时，首先考虑当<span class="math inline">\(x\)</span>和<span class="math inline">\(y\)</span>同奇或同偶的时候。我们可以把第一个数分为<span class="math inline">\(2\)</span>和<span class="math inline">\(x-2\)</span>，然后我们将<span class="math inline">\(y\)</span>分为<span class="math inline">\(y+1-x\)</span>和<span class="math inline">\(x-1\)</span>。很明显，首先，<span class="math inline">\(x-2\)</span>与<span class="math inline">\(x-1\)</span>互质。然后，因为<span class="math inline">\(x\)</span>,<span class="math inline">\(y\)</span>同奇偶，所以<span class="math inline">\(y-x+1\)</span>一定是个奇数，因此其与<span class="math inline">\(2\)</span>互质。当然，此时需要确保<span class="math inline">\(x&lt;y\)</span>，若不符合，置换<code>x</code>,<code>y</code>即可。</li>
+<li>但是，上面的情况其实需要考虑一种特殊情况。因为题目要求了<span class="math inline">\(a_i, b_i &gt; 1\)</span>，而当<span class="math inline">\(x=y\)</span>时，<span class="math inline">\(x-y+1=1\)</span>，所以不符合题目要求。此时，我们只要令<span class="math inline">\(a_1 = 2, a_2 = x - 2, b_1 = 3, b_2 = y - 3\)</span>即可。因为<span class="math inline">\(2\)</span>,<span class="math inline">\(3\)</span>互质，<span class="math inline">\(x-2\)</span>,<span class="math inline">\(x-3\)</span>互质。</li>
+<li>然后我们便需要考虑<span class="math inline">\(x\)</span>,<span class="math inline">\(y\)</span>奇偶不同的时候了。我们此时先假设<span class="math inline">\(x\)</span>为奇数，<span class="math inline">\(y\)</span>为偶数的情况。然后，我们其实需要根据<span class="math inline">\(x\)</span>的情况再进行分类：
+<ol type="1">
+<li>当<span class="math inline">\(x \mod 3 \neq 2\)</span>时，我们可以将<span class="math inline">\(x\)</span>分为<span class="math inline">\(2\)</span>,<span class="math inline">\(x-2\)</span>，并且将<span class="math inline">\(y\)</span>分为<span class="math inline">\(y-3\)</span>,<span class="math inline">\(3\)</span>。因为<span class="math inline">\(x \mod 3 \neq 2\)</span>，所以<span class="math inline">\((x-2) \mod 3 \neq 0\)</span>，所以它们互质。然后又因为<span class="math inline">\(y\)</span>是偶数，所以<span class="math inline">\(y-3\)</span>是奇数，所以它与<span class="math inline">\(2\)</span>互质。</li>
+<li>当<span class="math inline">\(x \mod 3 = 2\)</span>时，我们则可以将<span class="math inline">\(x\)</span>分为<span class="math inline">\(4\)</span>,<span class="math inline">\(x-4\)</span>，并且将<span class="math inline">\(y\)</span>分为<span class="math inline">\(y-3\)</span>,<span class="math inline">\(3\)</span>。这样的话，此时因为<span class="math inline">\(x \mod 3 = 2\)</span>，所以<span class="math inline">\((x-4) \mod 3 \neq 0\)</span>，所以它们互质。而<span class="math inline">\(y-3\)</span>又与<span class="math inline">\(4\)</span>互质，因此满足条件。</li>
+<li>此外，我们可能会注意到，<span class="math inline">\(x-4\)</span>在<span class="math inline">\(x=5\)</span>时可能为<span class="math inline">\(1\)</span>，所以我们还需要单独考虑这种情况。因为<span class="math inline">\(5\)</span>是素数，且<span class="math inline">\(x\)</span>,<span class="math inline">\(y\)</span>不互质，所以<span class="math inline">\(y\)</span>一定是它的倍数，所以<span class="math inline">\(y&gt;=10\)</span>。那么我们便令<span class="math inline">\(a_1 = 2, a_2 = 3\)</span>，并且<span class="math inline">\(b_1 = y - 5, b_2 = 5\)</span>即可。</li>
+</ol></li>
+</ol>
+<h2 id="总结">总结</h2>
+<p><span class="math display">\[ ans = \left\{ \begin{aligned} &amp;a_1 = x,&amp; &amp;b_1 = y,&amp; &amp;\gcd(x,y)=1&amp; \\ &amp;a_1=2, a_2 = x - 2,&amp; &amp;b_1 = 3, b_2 = y - 3,&amp; &amp;x = y&amp; \\ &amp;a_1 = 2, a_2 = x - 2, &amp;&amp;b_1 = y+1-x, b_2 = x-1, &amp;&amp;x \mod 2 = y \mod 2&amp; \\ &amp;a_1 = 2, a_2 = x - 2,&amp; &amp;b_1 = y-3, b_2 = 3,&amp; &amp;x\text{奇}y{偶},\text{且}x \mod 3 \neq 2&amp; \\ &amp;a_1 = 2, a_2 = 3,&amp; &amp;b_1 = y-5, b_2=5,&amp; &amp;x=5,y{偶}&amp; \\ &amp;a_1 = 4, a_2 = x - 4,&amp; &amp;b_1 = y-3, b_2 = 3,&amp; &amp;x\text{奇}y{偶},\text{且}x \mod 3 = 2 &amp; \end{aligned} \right. \]</span></p>
+<h2 id="代码">代码</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans[<span class="number">5</span>][<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">gcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x, <span class="keyword">long</span> <span class="keyword">long</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x % y == <span class="number">0</span>? y : <span class="built_in">gcd</span>(y, x%y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (T--)</span><br><span class="line">    &#123;</span><br><span class="line">        k = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> x, y;</span><br><span class="line">        cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">gcd</span>(x, y)==<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            n = <span class="number">1</span>;</span><br><span class="line">            ans[<span class="number">1</span>][<span class="number">0</span>] = x;</span><br><span class="line">            ans[<span class="number">1</span>][<span class="number">1</span>] = y;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            n = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (x == y)</span><br><span class="line">            &#123;</span><br><span class="line">                ans[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">2</span>;</span><br><span class="line">                ans[<span class="number">2</span>][<span class="number">0</span>] = x - <span class="number">2</span>;</span><br><span class="line">                ans[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">3</span>;</span><br><span class="line">                ans[<span class="number">2</span>][<span class="number">1</span>] = x - <span class="number">3</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (x % <span class="number">2</span> == y % <span class="number">2</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (y&lt;x)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">swap</span>(x, y);</span><br><span class="line">                    k = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                ans[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">2LL</span>;</span><br><span class="line">                ans[<span class="number">2</span>][<span class="number">0</span>] = x - <span class="number">2</span>;</span><br><span class="line">                ans[<span class="number">1</span>][<span class="number">1</span>] = y + <span class="number">1</span> - x;</span><br><span class="line">                ans[<span class="number">2</span>][<span class="number">1</span>] = x - <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (x%<span class="number">2</span>==<span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">swap</span>(x, y);</span><br><span class="line">                    k = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (x % <span class="number">3</span> != <span class="number">2</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    ans[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">2LL</span>;</span><br><span class="line">                    ans[<span class="number">2</span>][<span class="number">0</span>] = x - <span class="number">2</span>;</span><br><span class="line">                    ans[<span class="number">1</span>][<span class="number">1</span>] = y - <span class="number">3</span>;</span><br><span class="line">                    ans[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">3LL</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (x==<span class="number">5</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    ans[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">2</span>;</span><br><span class="line">                    ans[<span class="number">2</span>][<span class="number">0</span>] = <span class="number">3</span>;</span><br><span class="line">                    ans[<span class="number">1</span>][<span class="number">1</span>] = y - <span class="number">5</span>;</span><br><span class="line">                    ans[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">5</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> </span><br><span class="line">                &#123;</span><br><span class="line">                    ans[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">4LL</span>;</span><br><span class="line">                    ans[<span class="number">2</span>][<span class="number">0</span>] = x - <span class="number">4</span>;</span><br><span class="line">                    ans[<span class="number">1</span>][<span class="number">1</span>] = y - <span class="number">3</span>;</span><br><span class="line">                    ans[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">3LL</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cout &lt;&lt; n &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            cout &lt;&lt; ans[i][k] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; ans[i][k^<span class="number">1</span>] &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/Code/Wannafly%20Camp%20Day%200/">Wannafly Camp Day 0<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/Code/%E7%88%AC%E7%88%AC%E7%88%AC%E5%B1%B1/">爬爬爬山<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="songeir/beaudar" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <span class="citation" data-cites="Songer">[@Songer]</span>(https://blog.songer.xyz/) 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Wannafly Camp Day 0 - Songer</title>
+
+  
+    <meta name="description" content="Wannafly Camp Day 0  今天是Camp的第一天，总共才做出来两道题，其中一道还几乎和我无关（捂脸。不过今天由于比较自闭，所以闲的没事几乎把所有题看了一下。其中有两题思路已经接近正确答案了，但是并没有继续推下去。。。今天最主要的问题还是对于题目的深挖，很多题目分析到后来便感觉无力，然后就放弃了。其中一个原因是到了后来没有毅力做下去，还有一个便是对题目的当前做法的可行性的分析不够准确">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wannafly Camp Day 0">
+<meta property="og:url" content="https://blog.songer.xyz/Code/Wannafly%20Camp%20Day%200/">
+<meta property="og:site_name" content="Songer">
+<meta property="og:description" content="Wannafly Camp Day 0  今天是Camp的第一天，总共才做出来两道题，其中一道还几乎和我无关（捂脸。不过今天由于比较自闭，所以闲的没事几乎把所有题看了一下。其中有两题思路已经接近正确答案了，但是并没有继续推下去。。。今天最主要的问题还是对于题目的深挖，很多题目分析到后来便感觉无力，然后就放弃了。其中一个原因是到了后来没有毅力做下去，还有一个便是对题目的当前做法的可行性的分析不够准确">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-01-21T01:12:06.000Z">
+<meta property="article:modified_time" content="2021-12-14T16:39:44.681Z">
+<meta property="article:author" content="Songer">
+<meta property="article:tag" content="c++, cpp, acm, algorithm, haskell">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Songer" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/images/ico.ico">
+  
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/images/logo.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Songer</div><div class="sub cap">念念不忘，必有回响</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">项目</a><a class="nav-item" href="/more/">更多</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%8F%8A%E8%A7%A3%E6%9E%90"><span class="toc-text">题目及解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-%E6%9C%BA%E5%99%A8%E4%BA%BA"><span class="toc-text">A 机器人</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b-%E5%90%83%E8%B1%86%E8%B1%86"><span class="toc-text">B 吃豆豆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-%E6%8B%86%E6%8B%86%E6%8B%86%E6%A0%91"><span class="toc-text">C 拆拆拆树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d-%E8%B6%85%E9%9A%BE%E7%9A%84%E6%95%B0%E5%AD%A6%E9%A2%98"><span class="toc-text">D 超难的数学题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e-%E6%B5%81%E6%B5%81%E6%B5%81%E5%8A%A8"><span class="toc-text">E 流流流动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-%E7%88%AC%E7%88%AC%E7%88%AC%E5%B1%B1"><span class="toc-text">F 爬爬爬山</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#g-%E5%8F%8C%E9%87%8D%E7%9F%A9%E9%98%B5"><span class="toc-text">G 双重矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#h-%E6%88%91%E7%88%B1%E5%89%B2%E8%91%B1"><span class="toc-text">H 我爱割葱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i-%E8%B5%B7%E8%B5%B7%E8%90%BD%E8%90%BD"><span class="toc-text">I 起起落落</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#j-%E5%A4%BA%E5%AE%9D%E5%A5%87%E5%85%B5"><span class="toc-text">J 夺宝奇兵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#k-%E6%98%9F%E7%90%83%E5%A4%A7%E6%88%98"><span class="toc-text">K 星球大战</span></a></li></ol></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">发布于&nbsp;<time datetime="2019-01-21T01:12:06.000Z">2019-01-21</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Wannafly Camp Day 0</span></h1>
+<h1 id="wannafly-camp-day-0">Wannafly Camp Day 0</h1>
+<blockquote>
+<p>今天是Camp的第一天，总共才做出来两道题，其中一道还几乎和我无关（捂脸。不过今天由于比较自闭，所以闲的没事几乎把所有题看了一下。其中有两题思路已经接近正确答案了，但是并没有继续推下去。。。今天最主要的问题还是对于题目的深挖，很多题目分析到后来便感觉无力，然后就放弃了。其中一个原因是到了后来没有毅力做下去，还有一个便是对题目的当前做法的可行性的分析不够准确。这是目前主要需要提高的地方。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="题目及解析">题目及解析</h2>
+<h3 id="a-机器人">A 机器人</h3>
+<p>题目来源: <a target="_blank" rel="noopener" href="https://www.zhixincode.com/contest/3/problem/A?problem_id=34"><em>comet OJ</em></a></p>
+<p>首先，这个题目给定的<span class="math inline">\(n\)</span>的数据非常之大，所以我们首先要从此处着手。题目中给出的一个关键的性质是"agv只能在特殊站点掉头"，并且"agv只能通过这些特殊站点实现区与区之间的转换"。所以，我们可以看出，非特殊点的点其实是不具备节点的性质的，或者说，我们可以把他们缩为边的一部分。这样，我们便可以把它缩为200个结点的图。对于某个点必走的情况我们可以把他变成某个边必走的情况。</p>
+<p>然后我们在这个图上根据实际情况进行分类讨论即可。然后对不同的情况直接求值即可。</p>
+<h3 id="b-吃豆豆">B 吃豆豆</h3>
+<p>题目来源: <a target="_blank" rel="noopener" href="https://www.zhixincode.com/contest/3/problem/B?problem_id=35"><em>comet OJ</em></a></p>
+<p>首先我们来看<span class="math inline">\(C\)</span>较小时(<span class="math inline">\(C=1018\)</span>)的做法。我们可以使用<span class="math inline">\(dp[i][j][k]\)</span>来存储在第<span class="math inline">\(k\)</span>秒时走到<span class="math inline">\((i,j)\)</span>的收集到的糖果量，然后直接DP即可，转移方程如下：</p>
+<p><span class="math display">\[ dp[i][j][k] = dp[i+ip[z]][j+jp[z]][k-1] + ( T[i][j]%k==0?1:0 ) \]</span></p>
+<p>其中，<span class="math inline">\(ip[], jp[]\)</span>存储了一次移动的位移。当<span class="math inline">\(dp[i][j][k] &gt; C\)</span>时，条件便满足了。</p>
+<p>然后，当我们的<span class="math inline">\(C\)</span>变为<span class="math inline">\(10^{18}\)</span>时，我们便需要使用倍增的方法来实现。因为<span class="math inline">\(T[i][j] \leq 10\)</span>，所以我们可以把所有的<span class="math inline">\(T[i][j]\)</span>的最小公倍数的最大值<span class="math inline">\(2520\)</span>当作一个大周期。这样的话我们便可以利用大的周期来倍增去掉<span class="math inline">\(C\)</span>中的大部分，最后剩下小于<span class="math inline">\(2520\)</span>的部分再按照上面的DP直接求即可。</p>
+<h3 id="c-拆拆拆树">C 拆拆拆树</h3>
+<p>题目来源: <a target="_blank" rel="noopener" href="https://www.zhixincode.com/contest/3/problem/C?problem_id=36"><em>comet OJ</em></a></p>
+<p>这道题我们队是按照构造题来做的，情况比较复杂，但是构造出来之后问题就不大了。其情况大致如下：</p>
+<p><span class="math display">\[
+ans = \left\{
+\begin{aligned}
+n = 1, &amp;&amp;\ a_1 = x, &amp;&amp; b_1 = y \ &amp;\ (x,y互\ \ 质\ \ )\\
+n = 2, &amp;&amp;\ a_1 = 2, a_2 = x - 2, &amp;&amp; b_1 = y + 1 - x, b_2 = x - 1 \ &amp;\ (x,y同\ \ 奇\ \ 或\ \ 同\ \ 偶\ \ ) \\
+n = 2, &amp;&amp;\ a_1 = 2, a_2 = x - 2, &amp;&amp; b_1 = y - 3, b_2 = 3 \ &amp;\ (x奇\ \ y偶\ \ 且\ \ x\ mod\ 3 \neq 2)\\
+n = 2, &amp;&amp;\ a_1 = 4, a_2 = x - 4, &amp;&amp; b_1 = y - 3, b_2 = 3 \ &amp;\ (x奇\ \ y偶\ \ 且\ \ x\ mod\ 3 = 2)\\
+\end{aligned}
+\right.
+\]</span></p>
+<p>实际情况下，还要根据<span class="math inline">\(x,y\)</span>是否相等和是否会有为<span class="math inline">\(1\)</span>的输出特殊判断，此外还要注意因为我们上式中假设了<span class="math inline">\(x\)</span>奇<span class="math inline">\(y\)</span>偶，若情况相反时<code>swap()</code>后输出要注意输出顺序。</p>
+<h3 id="d-超难的数学题">D 超难的数学题</h3>
+<p>题目来源: <a target="_blank" rel="noopener" href="https://www.zhixincode.com/contest/3/problem/D?problem_id=37"><em>comet OJ</em></a></p>
+<p>这题并不会，当时讲的时候也没有听懂，留位置以用于补题。</p>
+<h3 id="e-流流流动">E 流流流动</h3>
+<p>题目来源: <a target="_blank" rel="noopener" href="https://www.zhixincode.com/contest/3/problem/E?problem_id=105"><em>comet OJ</em></a></p>
+<p>这题当时想了很长时间，并没有想到树上DP的做法，甚至完全没有想到DP上去。因为给定的数字建出的图的特殊性质，该图实际上是一棵树，然后直接树上DP即可。</p>
+<h3 id="f-爬爬爬山">F 爬爬爬山</h3>
+<p>题目来源: <a target="_blank" rel="noopener" href="https://www.zhixincode.com/contest/3/problem/F?problem_id=39"><em>comet OJ</em></a></p>
+<p>这题其实就是一个建图题，难度在于如何建图，而且实际上也比较简单。因为wls体力不能低于<span class="math inline">\(0\)</span>，所以最高的山也应该小于<span class="math inline">\(k+high[1]\)</span>。这样的话，走最高的山就会有一个<span class="math inline">\((k+high[1]-high[i])^2\)</span>的代价。我们可以将这个代价抽象为一条边，对这个节点进行拆电，然后跑一边最短路即可。</p>
+<h3 id="g-双重矩阵">G 双重矩阵</h3>
+<p>题目来源: <a target="_blank" rel="noopener" href="https://www.zhixincode.com/contest/3/problem/G?problem_id=40"><em>comet OJ</em></a></p>
+<p>这题比赛时我们队伍是按照分类讨论的方法来想的，但是情况比较复杂，最后并没有分析出来。实际上利用我们要求的是最大的子矩阵的这个性质，我们完全可以暴力枚举一个举行的上、左、下三个边，然后由于我们只考虑比当前的答案更大的值，所以右边的边会只会向右移动而不会向左移动，所以并不会增加时间。此外加上一个树状数组或线段树来维护区间的<code>gcd()</code>，这样便能在给定时间内求出了。</p>
+<h3 id="h-我爱割葱">H 我爱割葱</h3>
+<p>题目来源: <a target="_blank" rel="noopener" href="https://www.zhixincode.com/contest/3/problem/H?problem_id=41"><em>comet OJ</em></a></p>
+<p>这题当时做的时候便认为是DP，但是由于并没有写过这种递归类型的DP，所以只是认为需要找一个方程然后循环即可，所以并没能找到一个可用的DP方程。实际的做法应该为根据葱的底将从分为互不相连的几部分，然后递归的让他们计算出来，最后再用这些部分来更新当前部分的信息。</p>
+<h3 id="i-起起落落">I 起起落落</h3>
+<p>题目来源: <a target="_blank" rel="noopener" href="https://www.zhixincode.com/contest/3/problem/I?problem_id=42"><em>comet OJ</em></a></p>
+<p>我们先分别存储到位置<span class="math inline">\(i\)</span>的比<span class="math inline">\(j\)</span>个数要小的数的个数，然后枚举所有的节点，按照下面的公式进行DP：</p>
+<p><span class="math display">\[ dp[i] = \sum_1^{i-2}  dp[k] * smaller[k][i] \]</span></p>
+<p>不过该方程智能计算<span class="math inline">\(n\)</span>较小时的情况，所以还需要进一步的优化。但是当时并没有听懂优化的具体写法。</p>
+<h3 id="j-夺宝奇兵">J 夺宝奇兵</h3>
+<p>题目来源: <a target="_blank" rel="noopener" href="https://www.zhixincode.com/contest/3/problem/J?problem_id=43"><em>comet OJ</em></a></p>
+<p>首先朴素的想，我们可以枚举除wls外宝物最多的人有多少宝物。然后我们需要拿走所有大于该数量的宝物，此后直接贪心的拿更便宜的直至符合条件，这样便能算出最少需要的金币。</p>
+<p>不过这个算法较为朴素，所以我们还需要进一步优化，不过这题的优化也没有听懂。。。</p>
+<h3 id="k-星球大战">K 星球大战</h3>
+<p>题目来源: <a target="_blank" rel="noopener" href="https://www.zhixincode.com/contest/3/problem/K?problem_id=44"><em>comet OJ</em></a></p>
+<p>此题同D，完全不懂。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/Diary/%E5%A4%A7%E4%BA%8C%E4%B8%8A%E7%AC%AC%E5%8D%81%E5%85%AB%E5%91%A8/">大二上第十八周<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/Code/%E6%8B%86%E6%8B%86%E6%8B%86%E6%95%B0/">拆拆拆数<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="songeir/beaudar" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <span class="citation" data-cites="Songer">[@Songer]</span>(https://blog.songer.xyz/) 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

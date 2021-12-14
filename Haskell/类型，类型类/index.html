@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>类型，类型类 - Songer</title>
+
+  
+    <meta name="description" content="类型，类型类  没想到就写一个类型类，就写了这么多。。。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类型，类型类">
+<meta property="og:url" content="https://blog.songer.xyz/Haskell/%E7%B1%BB%E5%9E%8B%EF%BC%8C%E7%B1%BB%E5%9E%8B%E7%B1%BB/">
+<meta property="og:site_name" content="Songer">
+<meta property="og:description" content="类型，类型类  没想到就写一个类型类，就写了这么多。。。。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-02-03T10:00:48.000Z">
+<meta property="article:modified_time" content="2021-12-14T16:39:44.685Z">
+<meta property="article:author" content="Songer">
+<meta property="article:tag" content="c++, cpp, acm, algorithm, haskell">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Songer" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/images/ico.ico">
+  
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/images/logo.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Songer</div><div class="sub cap">念念不忘，必有回响</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">项目</a><a class="nav-item" href="/more/">更多</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%B1%BB%E5%9E%8B"><span class="toc-text">常见类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F"><span class="toc-text">类型变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E7%B1%BB%E5%85%A5%E9%97%A8"><span class="toc-text">类型类入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#eq"><span class="toc-text">Eq</span></a></li></ol></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">发布于&nbsp;<time datetime="2018-02-03T10:00:48.000Z">2018-02-03</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>类型，类型类</span></h1>
+<h1 id="类型类型类">类型，类型类</h1>
+<blockquote>
+<p>没想到就写一个类型类，就写了这么多。。。。</p>
+</blockquote>
+<span id="more"></span>
+<p>参考书籍: <a target="_blank" rel="noopener" href="http://learnyouahaskell.com/"><em>Learn you a Haskell</em></a></p>
+<h2 id="常见类型">常见类型</h2>
+<p>大多数与C中相似，但是开头字母必须大写，包含以下类型： <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Int</span>, <span class="type">Integer</span>, <span class="type">Float</span>, <span class="type">Double</span>, <span class="type">Bool</span>, <span class="type">Char</span></span><br></pre></td></tr></table></figure> 其中，Int在64位系统下为64位。而Integer则是高精度整型，无穷大。</p>
+<p>在Haskell中，元组也算一种特殊的类型，其类型取决于其中的项的数目和种类。理论上项的数目可以无限多，但实际最多62个。</p>
+<h2 id="类型变量">类型变量</h2>
+<p>当我们想要写一个取出列表第一个元素的函数，并且可以同时应用于多种不同类型的列表时，我们会怎么做呢？在C++中，我们会用模板(Template)，而在Haskell中，我们就要用到类型变量了。</p>
+<p>比如，我们上述的函数类型便如下： <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">head</span> :: [a] -&gt; a</span><br></pre></td></tr></table></figure> 这里的<code>a</code>，就是一个类型变量了。在这里，<code>a</code>可以是任何类型，只需保证所有的<code>a</code>是同一种类型便可以了。我们还可以使用其他的变量名，不过一般都会使用<code>a,b,c...</code>。</p>
+<p>比如，<code>fst</code>可以取出一个序对中的第一个元素，其类型如下： <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">fst</span> :: (a,b) -&gt; a</span><br></pre></td></tr></table></figure></p>
+<h2 id="类型类入门">类型类入门</h2>
+<p>类型类(typeclass)是定义行为的接口。如果一个类型是某类型类的示例(instance)，那它必实现了该类型类所描述的行为。</p>
+<p>定义念完了，但还是不太明白。那我们可以举一个例子如下：</p>
+<p>首先，我们都知道在Haskell中，<code>==</code>为一个函数，那么，他的类型是什么呢： <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(==) :: (<span class="type">Eq</span> a) =&gt; a -&gt; a -&gt; <span class="type">Bool</span></span><br></pre></td></tr></table></figure> 在这里，我们接触了一个新的符号<code>=&gt;</code>，它的左侧叫做<strong>类型约束(type constraint)</strong>，表示下面的<code>a</code>类型属于<code>Eq</code>这种类型类。它指明了下面的<code>a</code>类型支持比较操作。通俗的说类型类便是"类型的类型",虽然不是很准确。</p>
+<p>下面，是各种常见的类型类。</p>
+<h3 id="eq">Eq</h3>
+<p>前面已经提到了，Eq类型类用于判断相等性的类型，要求它的示例必须实现<code>==</code>和<code>\=</code>两个函数。在类型约束中用<code>Eq</code>进行约束，就能确保约束的类型能够进行比较操作。 ### Ord 用于可以比较大小的类型。除了函数以外，我们目前所谈到的所有类型都是<code>Ord</code>的实例。 ### Show <code>Show</code>类型类的实例为可以表示为字符串的类型。到目前为止，我们常用的类型中除函数外都为<code>Show</code>类型类的示例。能够操作<code>Show</code>类型类的实例的函数中，最常用的是<code>show</code>。功能是将该实例转为字符串: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--此处为交互模式</span></span><br><span class="line"><span class="title">ghci</span>&gt; show <span class="number">3</span></span><br><span class="line"><span class="string">&quot;3&quot;</span></span><br><span class="line"><span class="title">ghci</span>&gt; show <span class="number">5.334</span></span><br><span class="line"><span class="string">&quot;5.334&quot;</span></span><br></pre></td></tr></table></figure> ### Read <code>Read</code>可以是为<code>Show</code>的反例。同样，除函数外我们提到的所有类型均为<code>Read</code>的实例。它可以将字符串类型转为<code>Read</code>的某个实例类型。 <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ghci</span>&gt; read <span class="string">&quot;True&quot;</span> || <span class="type">False</span></span><br><span class="line"><span class="type">True</span></span><br><span class="line"><span class="title">ghci</span>&gt; read <span class="string">&quot;8.2&quot;</span> + <span class="number">3.8</span></span><br><span class="line"><span class="number">12.0</span></span><br></pre></td></tr></table></figure> 但是，当我们在写<code>Read "4"</code>这样的语句时，<code>Read</code>将会不知道<code>4</code>该被转化为哪种类型，所以此时我们便应这样写: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ghci</span>&gt; read <span class="string">&quot;4&quot;</span> :: <span class="type">Int</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="title">ghci</span>&gt; read <span class="string">&quot;[1,2,3,4]&quot;</span> :: [<span class="type">Float</span>]</span><br><span class="line">[<span class="number">1.0</span>,<span class="number">2.0</span>,<span class="number">3.0</span>,<span class="number">4.0</span>]</span><br></pre></td></tr></table></figure> 不过，当我们像这样写时:</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">gchi</span>&gt; read <span class="string">&quot;4&quot;</span> + <span class="number">5</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="title">ghci</span>&gt; read <span class="string">&quot;[1,2,3,4]&quot;</span> ++ [<span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<p>因为Haskell可以根据后面判断，所以不需标注。 ### Enum <code>Enum</code>的实例类型都是由连续顺序的--他们的值都是可以枚举的。其主要特点在于支持<code>succ</code>和<code>pred</code>函数，分别为<strong>后继(successer)</strong>和<strong>前缀(predecesor)</strong>。包含的类型主要有<code>()</code>,<code>Bool</code>,<code>Char</code>,<code>Ordering</code>,<code>Int</code>,<code>Integer</code>,<code>Float</code>和<code>Double</code>。 <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ghci</span>&gt; [&#x27;a&#x27;..&#x27;e&#x27;]</span><br><span class="line"><span class="string">&quot;abcde&quot;</span></span><br><span class="line"><span class="title">ghci</span>&gt; [<span class="type">LT</span> .. <span class="type">GT</span>]	</span><br><span class="line">[<span class="type">LT</span>,<span class="type">EQ</span>,<span class="type">GT</span>]</span><br><span class="line"><span class="comment">--Ordering类型，只包括LT,EQ,GT三种值，分别代表小于，等于，大于。</span></span><br><span class="line"><span class="title">ghci</span>&gt; succ &#x27;<span class="type">B&#x27;</span></span><br><span class="line">&#x27;<span class="type">C&#x27;</span></span><br></pre></td></tr></table></figure> ### Bounded <code>Bounded</code>类型类的类型实例都有一个上限和下限，分别可以用<code>maxBound</code>和<code>minBound</code>来取得。 <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ghci</span>&gt; minBound :: <span class="type">Int</span></span><br><span class="line"><span class="number">-2147483648</span></span><br><span class="line"><span class="title">ghci</span>&gt; maxBound :: <span class="type">Char</span></span><br><span class="line">&#x27;\<span class="number">1114111</span>&#x27;</span><br></pre></td></tr></table></figure> <code>minBound</code>和<code>maxBound</code>两个函数都很有趣，类型为<code>(Bounded a) =&gt; a</code>，他们都是<strong>多态常量(polymorphic constant)</strong>。 ### Num <code>Num</code>是一个表示数值的类型类，它的实例都具有数的特征。比如，一个数的类型: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">20</span> :: (<span class="type">Num</span> t) =&gt; t</span><br></pre></td></tr></table></figure> 所有的数都是多态常量，它可以具有任何<code>Num</code>类型类中的实例类型的特征，如<code>Int</code>,<code>Integer</code>,<code>Float</code>,<code>Double</code>. <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">ghci</span>&gt; <span class="number">20</span> :: <span class="type">Int</span></span><br><span class="line"><span class="number">20</span></span><br><span class="line"><span class="title">ghci</span>&gt; <span class="number">20</span> :: <span class="type">Float</span></span><br><span class="line"><span class="number">20.0</span></span><br></pre></td></tr></table></figure> 在这里，我们可以检查一下运算符的类型: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(*) :: (<span class="type">Num</span> a) =&gt; a -&gt; a -&gt; a</span><br></pre></td></tr></table></figure> ### Floating <code>Floating</code>只包含两种类型<code>Float</code>和<code>Double</code>。需要用到<code>Floating</code>类型类的函数一般都是需要用到浮点数来进行某种计算的，如<code>sin</code>,<code>cos</code>和<code>sqrt</code>。 ### Integeral <code>Integeral</code>仅包含<code>Int</code>,<code>Integer</code>。与其相关的一个函数很有用，叫<code>fromIntegeral</code>。其类型如下: <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">fromIntegeral</span> :: (integeral a, <span class="type">Num</span> b) =&gt; a -&gt; b</span><br></pre></td></tr></table></figure> 这个函数能够取一个整数，返回一个更为通用的<code>Num</code>类型类的实例，因为Haskell中浮点型与整型不能直接相加，所以此函数用处很大。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/Diary/12/">12<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/C#/CTS%E7%B1%BB%E5%9E%8B%EF%BC%8C%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/">CTS类型，枚举类型，控制语句<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="songeir/beaudar" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <span class="citation" data-cites="Songer">[@Songer]</span>(https://blog.songer.xyz/) 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

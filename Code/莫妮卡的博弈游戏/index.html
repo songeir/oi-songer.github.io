@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>莫妮卡的博弈游戏 - Songer</title>
+
+  
+    <meta name="description" content="莫妮卡的博弈游戏 HITwh 23  我是多久没写过题解了，感觉自己已经快要废掉了(≧﹏ ≦)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="莫妮卡的博弈游戏">
+<meta property="og:url" content="https://blog.songer.xyz/Code/%E8%8E%AB%E5%A6%AE%E5%8D%A1%E7%9A%84%E5%8D%9A%E5%BC%88%E6%B8%B8%E6%88%8F/">
+<meta property="og:site_name" content="Songer">
+<meta property="og:description" content="莫妮卡的博弈游戏 HITwh 23  我是多久没写过题解了，感觉自己已经快要废掉了(≧﹏ ≦)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-08-28T02:26:35.000Z">
+<meta property="article:modified_time" content="2021-12-14T16:39:44.685Z">
+<meta property="article:author" content="Songer">
+<meta property="article:tag" content="c++, cpp, acm, algorithm, haskell">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="Songer" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/images/ico.ico">
+  
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/images/logo.jpg" onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Songer</div><div class="sub cap">念念不忘，必有回响</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/wiki/">项目</a><a class="nav-item" href="/more/">更多</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5"><span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%85%A5"><span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%87%BA"><span class="toc-text">样例输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%93n1%E6%97%B6"><span class="toc-text">当\(n&#x3D;&#x3D;1\)时</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%93n2%E6%97%B6"><span class="toc-text">当\(n&#x3D;&#x3D;2\)时</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">发布于&nbsp;<time datetime="2018-08-28T02:26:35.000Z">2018-08-28</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>莫妮卡的博弈游戏</span></h1>
+<h1 id="莫妮卡的博弈游戏">莫妮卡的博弈游戏</h1>
+<h1 id="hitwh-23">HITwh 23</h1>
+<blockquote>
+<p>我是多久没写过题解了，感觉自己已经快要废掉了(≧﹏ ≦)</p>
+</blockquote>
+<span id="more"></span>
+<p>题目来源：<a target="_blank" rel="noopener" href="http://10.245.130.74:81/problem/23/">HITwh OJ</a>(学校内网的oj，外网不能访问。。。。。)</p>
+<p>时间限制: 1000ms 内存限制: 64M</p>
+<h3 id="题目描述">题目描述</h3>
+<p>你最近从Steam上下载了一款名为《心跳文学社》的游戏，然后你开始玩，但逐渐地你发现一个问题，无论你使用什么方法，你都无法攻略游戏中一个名为莫妮卡的角色。随着游戏的进行，你发现你逐渐地无法控制游戏的走向，更糟糕的是，你发现莫妮卡十分清楚她正处于一个游戏当中，接着她破坏了你的游戏存档文件。为了拯救你的存档，你决定与莫妮卡玩一个游戏，如果你获胜了就可以恢复你的存档文件。</p>
+<p>游戏规则是这样的：在你面前有<span class="math inline">\(N\)</span>个单词，每一个单词都有一个类似好感值的属性<span class="math inline">\(X_i\)</span>，你和你莫妮卡轮流进行每个回合的操作。在每个回合中，玩家必须从这<span class="math inline">\(N\)</span>个单词中选择两个，然后把这两个单词组合成一个新的单词，假设之前的两个单词的好感值分别为<span class="math inline">\(X_a\)</span>与<span class="math inline">\(X_b\)</span>，那么新单词的好感值可以是$ X_a − X_b <span class="math inline">\(或者\)</span> X_b − X_a $。游戏将持续进行直到只剩下一个单词，这个单词的好感值Xf将决定游戏的胜负。</p>
+<p>如果$ X_f % 3==0 <span class="math inline">\(，那么当前回合进行操作的玩家失败； 如果\)</span> X_f % 3==1 <span class="math inline">\(，那么你获胜； 如果\)</span> X_f % 3==2 $，那么莫妮卡获胜。 注意，这里的取模运算是数学意义上的，比如说：<span class="math inline">\(3\%3=0\)</span>，<span class="math inline">\(1\%3=1\)</span>，<span class="math inline">\(−1\%3=2\)</span>，结果不会为负数。</p>
+<p>我们都知道，AI是十分聪明的，这意味着莫妮卡每次都会选择最佳的操作方式。而你为了拯救你的存档，你学习了博弈论的相关知识，这意味着你每次也会选择最佳的操作方式。</p>
+<p>现在你想知道对于一个给定的局面，谁将成为最后的胜利者。</p>
+<h3 id="输入">输入</h3>
+<p>输入包含多行。 第一行为一个整数<span class="math inline">\(T(1≤T≤233)\)</span>，代表测试用例的组数。 对于每组测试用例，第一行为两个整数，分别是单词的数量<span class="math inline">\(N (1≤N≤233)\)</span>和先进行操作的玩家<span class="math inline">\(F∈{0,1}\)</span>，如果<span class="math inline">\(F=0\)</span>，则你先进行操作，否则由莫妮卡先进行操作。 接下来的一行为N个整数，代表第i个单词的好感值<span class="math inline">\(X_i (−233≤Xi≤233)\)</span>。</p>
+<h3 id="输出">输出</h3>
+<p>对于每组测试用例，如果你能获胜，则在新的一行中输出"<code>WIN</code>"，否则输出"<code>LOST</code>"。 如果你觉得不能确定谁会获胜，就输出"<code>OUTPUT THIS TO GET WA</code>"。</p>
+<h3 id="样例输入">样例输入</h3>
+<blockquote>
+<p>3</p>
+</blockquote>
+<blockquote>
+<p>1 0</p>
+</blockquote>
+<blockquote>
+<p>9</p>
+</blockquote>
+<blockquote>
+<p>3 1</p>
+</blockquote>
+<blockquote>
+<p>1 2 3</p>
+</blockquote>
+<blockquote>
+<p>5 0</p>
+</blockquote>
+<blockquote>
+<p>1 3 5 7 9</p>
+</blockquote>
+<h3 id="样例输出">样例输出</h3>
+<blockquote>
+<p>LOST</p>
+</blockquote>
+<blockquote>
+<p>WIN</p>
+</blockquote>
+<blockquote>
+<p>LOST</p>
+</blockquote>
+<h2 id="题解">题解</h2>
+<p>这一题乍一看很复杂，但是其中其实可以找到很巧妙的规律。我们可以发现最后的答案是与<span class="math inline">\(\%3\)</span>的值有关的，也就是说，对于<code>n</code>个数<span class="math inline">\(\{x_1,x_2,x_3 ,\dots ,x_n\}\)</span>，我们可以将其转化为<span class="math inline">\(\{ x_1\%3 , x_2\%3 , x_3\%3 , \dots ,x_n\%3 \}\)</span>，而答案不变。在这种情况的基础下我们研究能够出现必胜策略的情况。</p>
+<h4 id="当n1时">当<span class="math inline">\(n==1\)</span>时</h4>
+<p>我们可以根据<span class="math inline">\(n,k,x_1\)</span>的值来推断谁能获胜。其方程如下：</p>
+<p><span class="math display">\[ Answer = \left\{
+\begin{aligned}
+WIN &amp; ， &amp; x_1\%3=1 \\
+LOST &amp; , &amp; x_1\%3=2 \\
+WIN &amp; ， &amp; k=1 \ \&amp;\&amp;\  x_1\%3=0 \\
+LOST &amp; ， &amp; k=0 \ \&amp;\&amp;\  x_1\%3=0 \\
+\end{aligned}
+\right. \]</span></p>
+<h4 id="当n2时">当<span class="math inline">\(n==2\)</span>时</h4>
+<p>对于<span class="math inline">\((x_1,x_2)\)</span>我们可以得出共有以下5种情况： <span class="math display">\[\{ (0,0) , (1,1) , (2,2) , (0,1) , (0,2) , (1,2) \}\]</span> 而因为我们只能进行减法运算，所以我们可以得出<span class="math inline">\(\{ (0,0),(1,1),(2,2)\}\)</span>,<span class="math inline">\(\{ (0,1),(1,2)\}\)</span>都是相等的，所以我们最后只有<span class="math inline">\(\{ (0,0),(0,1),(0,2)\}\)</span>三种情况。</p>
+<p>我们假设第一步由"我"来下，即<span class="math inline">\(k=0\)</span>。那么，对于以上三种情况： ##### (0,0) 因为下一局变为<span class="math inline">\((0)\)</span>,所以答案为<code>WIN</code> ##### (0,1) 我们有两种选择 $ 0-1 $ 和 $ 1-0 $ ,第一种<span class="math inline">\(\%3\)</span>后为<span class="math inline">\(2\)</span>,第二种为<span class="math inline">\(1\)</span>。因为我们总会选择最佳策略，所以肯定会选择<span class="math inline">\(1-0\)</span>，然后获胜。 ##### (0,2) 我们也有两种选择$ 0-2 $ 和 $ 2-0 $ ，第一种为<span class="math inline">\(2\)</span>,第二种<span class="math inline">\(\%3\)</span>后为<span class="math inline">\(1\)</span>。同理，我们会选择<span class="math inline">\(0-2\)</span>，所以我们一定能获胜。</p>
+<h4 id="总结">总结</h4>
+<p>当<span class="math inline">\(n==2\)</span>时，无论<span class="math inline">\(x_1,x_2\)</span>为多少，当前进行操作的人一定能获胜。</p>
+<p>所以当<span class="math inline">\(n&gt;2\)</span>时，我们不需要关注<span class="math inline">\(x_i\)</span>的数值，而只需要关注当最后选至<span class="math inline">\(n==2\)</span>时谁进行操作，即： <span class="math display">\[ Answer = \left\{
+\begin{aligned}
+WIN &amp; , &amp; (n+k)\%2=0\ ,\ n&gt;1 \\ 
+LOST &amp;, &amp; (n+k)\%2=1\ ,\ n&gt;1
+\end{aligned}
+\right.
+\]</span></p>
+<p>得出该结论后，代码就很简单了，如下： <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">    <span class="keyword">while</span>(t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> n,k;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n,&amp;k);</span><br><span class="line">        <span class="keyword">int</span> x;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;x);</span><br><span class="line">        <span class="keyword">if</span> (n==<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (x%<span class="number">3</span>==<span class="number">1</span>)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;WIN\n&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (x%<span class="number">3</span>==<span class="number">2</span>)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;LOST\n&quot;</span>);</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (k==<span class="number">0</span>)</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">&quot;LOST\n&quot;</span>);</span><br><span class="line">                <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;WIN\n&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((n+k)%<span class="number">2</span>==<span class="number">1</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;LOST\n&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;WIN\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/Code/Balance%5BDP%5D/">Balance[DP]<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/Code/H/">H<span class="note">较新</span></a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body beaudar'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="beaudar" repo="songeir/beaudar" issue-term="pathname" theme="preferred-color-scheme" input-position="top" comment-order="desc" loading="false" branch="main"></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <span class="citation" data-cites="Songer">[@Songer]</span>(https://blog.songer.xyz/) 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1" title="v1.6.1">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.6.1';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadBeaudar() {
+    const els = document.querySelectorAll("#comments #beaudar");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://beaudar.lipk.org/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+      loadBeaudar();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
