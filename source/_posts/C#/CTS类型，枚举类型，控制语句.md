@@ -2,6 +2,7 @@
 title: "CTS类型，枚举类型，控制语句"
 date: 2018-02-03 18:01:20
 tags: 
+categories: [tags]
 ---
 
 # CTS类型，枚举类型，控制语句

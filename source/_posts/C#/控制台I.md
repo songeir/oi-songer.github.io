@@ -2,6 +2,7 @@
 title: "控制台I"
 date: 2018-02-12 11:56:46
 tags: 
+categories: [tags]
 ---
 
 # 控制台I/O，注释，预处理器指令

@@ -1,0 +1,18 @@
+
+
+sidebar:
+  menu:
+    post: '[btn.blog](/)'
+    wiki: '[btn.wiki](/wiki/)'
+    more: '[更多](/more/)'
+  widgets:
+    default_layout: [welcome, recent, category, tagcloud, webinfo]
+
+inject:
+  script:
+    - <script id="__bs_script__">//<![CDATA[document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.27.5'><\/script>".replace("HOST", location.hostname));//]]></script>
+
+comments:
+  service: beaudar
+  beaudar:
+    repo: songeir/beaudar

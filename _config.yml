@@ -4,7 +4,8 @@
 
 # Site
 title: Songer
-subtitle: ''
+avatar: /images/logo.jpg
+subtitle: '念念不忘，必有回响'
 description: '念念不忘，必有回响'
 keywords: c++, cpp, acm, algorithm, haskell
 author: Songer
@@ -13,7 +14,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://songer.xyz
+url: https://blog.songer.xyz
 root: /
 permalink: :title/
 permalink_defaults:
@@ -47,8 +48,8 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
-  tab_replace: 
+  auto_detect: true
+  tab_replace: true
   wrap: true
   hljs: false
 # prismjs:
@@ -105,8 +106,15 @@ plugins:
   - markdown-it-sub
   - markdown-it-sup
   - markdown-it-emoji
+  - hexo-math
 ## Themes: https://hexo.io/themes/
-theme: Anisina
+theme: stellar
+mathjax:
+  single_dollars: true
+  every_page: false
+  cjk_width: 0.9
+  normal_width: 0.6
+  cdn: https://cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
